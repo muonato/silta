@@ -1,2 +1,1 @@
-# silta
-Simple Localized Tasks -SILTA
+# Simple Localized Tasks - SILTA
