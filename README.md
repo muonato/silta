@@ -1,5 +1,8 @@
 # SILTA - Simple Localized Tasks
 A PRIVATE CODE REVIEW, PROOF-OF-CONCEPT PHASE
+## About
+Personal application for simple process management use.
+
 ## Background
 Hobby project SILTA started in early 2022 from the need to better organize the steps involved in Digital Forensics investigations. Inspired by the *Kirjuri* application *(github.com/AnttiKurittu/kirjuri)* the goal was set to improving the personal DFIR process documenting as well as staying up-to-date with the tasks outlined in the community best practices.
 
@@ -11,3 +14,7 @@ Minimalism is a major driving factor. Keeping both the user interface and applic
 
 ## Requirements
 Current design is based solely on built-in Python 3.9.5 modules and utilizes the SQLite and JSON format for data storage.
+
+## Licensing
+SILTA is released under the terms of the GNU General Public License version 3
+https://www.gnu.org/licenses/gpl-3.0.en.html
