@@ -3,7 +3,7 @@
 # SIMPLE LOCALIZED TASKS
 # Copyright 2022 muonato
 #   GNU License GPL v3
-#
+
 import http.server
 
 from os import path
