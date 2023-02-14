@@ -16,5 +16,4 @@ Minimalism is a major driving factor. Keeping both the user interface and applic
 Current design is based solely on built-in Python 3.9.5 modules and utilizes the SQLite and JSON format for data storage.
 
 ## Licensing
-SILTA is released under the terms of the GNU General Public License version 3
-https://www.gnu.org/licenses/gpl-3.0.en.html
+SILTA is released under the terms of the GNU General Public License version 3, https://www.gnu.org/licenses/gpl-3.0.en.html
