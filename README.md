@@ -10,7 +10,7 @@ Python project SILTA began in early 2022 from the need to manage tasks in Digita
 As of writing this on Feb 2023 the project is constantly evolving as new ideas for usability and better Python coding arise. Latest overhaul in progress involves extending the design to support not just the Digital Forensics process but in fact any project that can be simplified merely to a set of tasks having pre-defined attributes where these can dynamically be configured by the end-user.
 
 ## Design philosophy
-Minimalism is a major driving factor. Keeping both the user interface and application design concise is paramount. Pythonic expression is of key importance throughout. An effort is made to adhere to the programming conventions like *PEP 8*. Learning. Coding. Having Fun.
+Minimalism is a major driving factor. Keeping both the user interface and application design concise is paramount. Pythonic expression is of key importance throughout. An effort is made to adhere to the programming conventions such as *PEP 8* in particular. Learning. Coding. Having Fun.
 
 ## Requirements
 Current design is based solely on built-in Python 3.9.5 modules and utilizes the SQLite and JSON format for data storage.
