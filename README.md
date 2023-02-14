@@ -1,5 +1,5 @@
 # SILTA - Simple Localized Tasks
-A PRIVATE CODE REVIEW: PROOF-OF-CONCEPT PHASE
+A CODE REVIEW: PROOF-OF-CONCEPT
 ## About
 Single-user browser-based organizer for simple project management.
 
