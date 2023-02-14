@@ -6,8 +6,8 @@ Personal application for simple process management use.
 ## Background
 Hobby project SILTA started in early 2022 from the need to manage tasks in Digital Forensics investigations. Inspired by the *Kirjuri* application *(github.com/AnttiKurittu/kirjuri)* the goal was set to organizing the personal DFIR processing as outlined in the community best practices.
 
-## A ~~Work~~ Hobby In Progress                                                                           
-As of writing this on Feb 2023 the project is constantly evolving as new ideas for usability and better Python coding arise. Latest complete overhaul involves extending the design to support not just Digital Forensics projects but in fact any project that can be simplified merely to a set of tasks having pre-defined attributes where these can dynamically be configured by the end-user.
+## A ~~Work~~ Hobby In Progress
+As of writing this on Feb 2023 the project is constantly evolving as new ideas for usability and better Python coding arise. Latest overhaul in progress involves extending the design to support not just the Digital Forensics process but in fact any project that can be simplified merely to a set of tasks having pre-defined attributes where these can dynamically be configured by the end-user.
 
 ## Design philosophy
 Minimalism is a major driving factor. Keeping both the user interface and application design concise is paramount. Pythonic expression throughout is of key importance. Documenting. Learning. Coding. Having Fun.
