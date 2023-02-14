@@ -4,7 +4,7 @@ A CODE REVIEW: PROOF-OF-CONCEPT
 Single-user browser-based organizer for simple project management.
 
 ## Background
-Python project SILTA began in early 2022 from requests to help manage Digital Forensics Incident Response (DFIR) daily tasks. Inspired by the *Kirjuri* application *(github.com/AnttiKurittu/kirjuri)* the objective formed as developing a personal organizer application for DFIR projects.
+Python project SILTA began in early 2022 from a request to help manage Digital Forensics Incident Response (DFIR) daily tasks. Inspired by the *Kirjuri* application *(github.com/AnttiKurittu/kirjuri)* the objective became to develop a personal organizer application for DFIR projects.
 
 ## A ~~Work~~ Hobby In Progress
 As of writing this on Feb 2023 the project is evolving as new ideas for usability and better Python solutions emerge. Current goal is to facilitate any configuration of tasks to be dynamically specified by the end-user without re-inventing the database model everytime.
