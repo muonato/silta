@@ -11,5 +11,3 @@ Minimalism is a major driving factor. Keeping both the user interface and applic
 
 ## Requirements
 Current design is based solely on built-in Python 3.9.5 modules and utilizes the SQLite and JSON format for data storage.
-
-## Future plans
