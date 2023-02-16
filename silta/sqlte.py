@@ -16,6 +16,7 @@ class DB_SQLite:
     def __init__(self, f):                           
         self.con = sqlite3.connect(f)
 
+        # Create new DB from schema when given file missing
         if self.runsql("SELECT * FROM sqlite_master") == []:
             with open("data/silta.db.sql") as create_db:
                 self.runsql(create_db.read())
