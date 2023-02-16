@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 #
-#  SIMPLE LOCALIZED TASKS
-# v1.0 github/muonato 2022
+# SIMPLE LOCALIZED TASKS
+# Copyright 2022 muonato
+#   GNU License GPL v3
 
 import json
 
