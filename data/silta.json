@@ -1,0 +1,312 @@
+[
+{"HTM_COMMON":{
+	"top-menu-right-label-1":"Settings",
+	"nav-menu-left-label-1":"Project",
+	"nav-menu-left-label-2":"Product",
+	"nav-menu-left-label-3":"Task",
+	"nav-menu-left-label-4":"Location",
+	"nav-menu-left-label-5":"Operator",
+	"cfg-menu-left-label-5":"Status",
+	"obj-msg-1":"Delete the record ?",
+    "new-value":"(new)"}
+},
+{"HTM_OBJECT":{
+	"object-show":"block",
+	"host_title":"Projects",
+	"HOST_UC":1,
+	"LINK_UC":2,
+	"form-show-1":"block",
+	"form-show-2":"block",
+	"form-show-3":"block",
+	"form-show-4":"block",
+	"form-label-1":"Project",
+	"form-label-2":"Subject",
+	"form-label-3":"Owner",
+	"form-label-4":"Status",
+	"obj-menu-right-1":"block"},
+"HTM_NAVDIV":{
+	"nav-show":"block",
+	"nav-title":"Projects",
+	"nav-menu-left-2":"block",
+	"nav-menu-left-3":"block",
+	"nav-menu-left-4":"block",
+	"nav-menu-left-5":"block",
+	"nav-menu-right-1":"block",
+	"so":"DESC"},
+"SQL_CLAUSE":{
+	"SELECT_ROW":"SELECT '1' AS THIS_UC, projects.project_id AS id, projects.project AS f1, subject.class AS f2, operators.operator AS f3, status.class AS f4 FROM projects, classes subject, operators, classes status WHERE projects.subject = subject.class_id AND projects.author=operators.operator_id AND projects.status = status.class_id",
+	"BY_HOST_ID":"",
+	"BY_ROW_IDX":"AND projects.project_id = {id}",
+	"BY_KEYWORD":"AND (projects.project LIKE '%{fk}%' OR subject.class LIKE '%{fk}%' OR operators.operator LIKE '%{fk}%' OR status.class LIKE '%{fk}%')",
+	"SORT_ORDER":"ORDER BY projects.project_id {so}",
+	"INSERT_ROW":"INSERT INTO projects ('project', 'subject', 'author', 'status') VALUES ('{new-value}', 1, 1, 1)",
+	"SELECT_RAW":"SELECT project AS f1, subject AS f2, author AS f3, status AS f4 FROM projects WHERE project_id = {id}",
+	"UPDATE_ROW":"UPDATE projects SET project = '{f1}', subject = {f2}, author = {f3}, status = {f4} WHERE project_id = {id}",
+	"DELETE_ROW":"BEGIN; DELETE FROM tasks WHERE EXISTS (SELECT * FROM products WHERE products.product_id = tasks.object AND products.host = {id}); DELETE FROM products WHERE products.host = {id}; DELETE FROM projects WHERE project_id = {id}",
+	"SELECT_OPT":["SELECT '<option value=\"' || classes.class_id || '\">' || classes.class || '</option>' AS 'form-options-2' FROM classes, classes meta WHERE classes.category = meta.class_id AND meta.class = '_project'", "SELECT '<option value=\"' || operators.operator_id || '\">' || operators.operator || '</option>' AS 'form-options-3' FROM operators","SELECT '<option value=\"' || classes.class_id || '\">' || classes.class || '</option>' AS 'form-options-4' FROM classes, classes meta WHERE classes.category = meta.class_id AND meta.class = '_status'"]}
+},
+{"HTM_OBJECT":{
+	"object-show":"block",
+	"HOST_UC":1,
+	"LINK_UC":3,
+	"form-show-1":"block",
+	"form-show-2":"block",
+	"form-show-3":"block",
+	"form-show-4":"block",
+	"form-label-1":"Title",
+	"form-label-2":"Project",
+	"form-label-3":"Type",
+	"form-label-4":"Location",
+	"obj-menu-right-2":"block",
+	"obj-menu-right-4":"block"
+},
+"HTM_NAVDIV":{
+	"nav-show":"block",
+	"nav-title":"Products",
+	"nav-menu-left-1":"block",
+	"nav-menu-left-3":"block",
+	"nav-menu-left-4":"block",
+	"nav-menu-left-5":"block",
+	"so":"DESC"
+},
+"SQL_CLAUSE":{
+	"SELECT_ROW":"SELECT '2' AS THIS_UC, products.product_id AS id, products.product AS f1, products.host AS host_id, projects.project AS host_title, projects.project AS f2, products.link, type.class AS f3, location.class AS f4 FROM products, projects, classes type, classes location WHERE products.host = projects.project_id AND products.type = type.class_id AND products.location = location.class_id",
+	"BY_HOST_ID":"AND products.host = {id}",
+	"BY_ROW_IDX":"AND products.product_id = {id}",
+	"BY_KEYWORD":"AND (products.product LIKE '%{fk}%' OR projects.project LIKE '%{fk}%' OR type.class LIKE '%{fk}%' OR location.class LIKE '%{fk}%')",
+	"SORT_ORDER":"ORDER BY products.product_id {so}",
+	"INSERT_ROW":"INSERT INTO products ('product', 'host', 'type', 'location') VALUES ('{new-value}', {hi}, 1, 1)",
+	"SELECT_RAW":"SELECT product AS f1, host AS f2, type AS f3, location AS f4 FROM products WHERE product_id = {id}",
+	"UPDATE_ROW":"UPDATE products SET product = '{f1}', type = {f3}, location = {f4} WHERE product_id = {id}",
+	"DELETE_ROW":"BEGIN; DELETE FROM tasks WHERE object = {id}; DELETE FROM products WHERE product_id = {id}",
+	"SELECT_OPT":["SELECT '<option value=\"' || classes.class_id || '\">' || classes.class || '</option>' AS 'form-options-3' FROM classes, classes meta WHERE classes.category = meta.class_id AND meta.class = '_product'", "SELECT '<option value=\"' || classes.class_id || '\">' || classes.class || '</option>' AS 'form-options-4' FROM classes, classes meta WHERE classes.category = meta.class_id AND meta.class = '_location'"]}
+},
+{"HTM_OBJECT":{
+	"object-show":"block",
+	"HOST_UC":2,
+	"form-show-1":"block",
+	"form-show-2":"block",
+	"form-show-3":"block",
+	"form-show-4":"block",
+	"form-show-5":"block",
+	"form-label-1":"Task",
+	"form-label-2":"Project",
+	"form-label-3":"Date",
+	"form-label-4":"Operator",
+	"form-label-5":"Remarks"
+},
+"HTM_NAVDIV":{
+	"nav-show":"block",
+	"nav-title":"Tasks",
+	"nav-menu-left-1":"block",
+	"nav-menu-left-2":"block",
+	"nav-menu-left-4":"block",
+	"nav-menu-left-5":"block",
+	"show_active":"none",
+	"so":"DESC"
+},
+"SQL_CLAUSE":{
+	"SELECT_ROW":"SELECT '3' AS THIS_UC, 'block' AS show_active, tasks.task_id AS id, tasks.task AS f1, tasks.object AS host_id, products.product AS host_title, projects.project AS f2, datetime(tasks.timestamp, 'localtime') AS f3, operators.operator AS f4, tasks.notes AS f5, tasks.active AS f6, IIF(tasks.active = 1, 'checked', '') AS checked FROM tasks, products, projects, operators WHERE tasks.object = products.product_id AND products.host = projects.project_id AND operators.operator_id = tasks.owner",
+	"BY_HOST_ID":"AND tasks.object = {id}",
+	"BY_ROW_IDX":"AND tasks.task_id = {id}",
+	"BY_KEYWORD":"AND (tasks.task LIKE '%{fk}%' OR projects.project LIKE '%{fk}%' OR products.product LIKE '%{fk}%' OR datetime(tasks.timestamp, 'localtime') LIKE '%{fk}%' OR tasks.notes LIKE '%{fk}%')",
+	"SORT_ORDER":"ORDER BY timestamp {so}",
+	"INSERT_ROW":"INSERT INTO tasks ('task', 'object', 'owner', 'notes', 'active') VALUES ('{new-value}', {hi}, 1, NULL, 0)",
+	"SELECT_RAW":"SELECT tasks.task AS f1, tasks.notes AS f5, tasks.active AS f6 FROM tasks WHERE task_id = {id}",
+	"UPDATE_ROW":"UPDATE tasks SET task = '{f1}', notes = '{f5}', active = {f6}, timestamp = current_timestamp WHERE task_id = {id}",
+	"DELETE_ROW":"DELETE FROM tasks WHERE task_id = {id}",
+	"SELECT_OPT":[]}
+},
+{"HTM_OBJECT":{
+	"object-show":"block",
+	"HOST_UC":4,
+	"form-show-1":"block",
+	"form-label-1":"projects.subject"
+},
+"HTM_NAVDIV":{
+	"cfg-show":"block",
+	"cfg-title":"_subject @ classes",
+	"cfg-menu-left-2":"block",
+	"cfg-menu-left-3":"block",
+	"cfg-menu-left-4":"block",
+	"cfg-menu-left-5":"block",
+	"cfg-menu-right-1":"block",
+	"so":"DESC"
+},
+"SQL_CLAUSE":{
+	"SELECT_ROW":"SELECT '4' AS THIS_UC, classes.class_id AS id, classes.class AS f1, '_subject @ classes' AS host_title FROM classes, classes meta WHERE classes.category = meta.class_id AND meta.class = '_project'",
+	"BY_HOST_ID":"AND classes.class_id = {id}",
+	"BY_ROW_IDX":"AND classes.class_id = {id}",
+	"BY_KEYWORD":"AND classes.class LIKE '%{fk}%'",
+	"SORT_ORDER":"ORDER BY classes.class_id {so}",
+	"INSERT_ROW":"INSERT INTO classes ('class', 'category') VALUES ('{new-value}', 5)",
+	"SELECT_RAW":"SELECT classes.class AS f1 FROM classes WHERE class_id = {id}",
+	"UPDATE_ROW":"UPDATE classes SET class = '{f1}' WHERE class_id = {id}",
+	"DELETE_ROW":"DELETE FROM classes WHERE class_id = {id}",
+	"SELECT_OPT":[]}
+},
+{"HTM_OBJECT":{
+	"object-show":"block",
+	"HOST_UC":5,
+	"form-show-1":"block",
+	"form-label-1":"projects.status"
+},
+"HTM_NAVDIV":{
+	"cfg-show":"block",
+	"cfg-title":"_status @ classes",
+	"cfg-menu-left-1":"block",
+	"cfg-menu-left-2":"block",
+	"cfg-menu-left-3":"block",
+	"cfg-menu-left-5":"block",
+	"cfg-menu-right-1":"block",
+	"so":"DESC"
+},
+	"SQL_CLAUSE":{
+	"SELECT_ROW":"SELECT '5' AS THIS_UC, classes.class_id AS id, classes.class AS f1, '_status @ classes' AS host_title FROM classes, classes meta WHERE classes.category = meta.class_id AND meta.class = '_status'",
+	"BY_HOST_ID":"AND classes.class_id = {id}",
+	"BY_ROW_IDX":"AND classes.class_id = {id}",
+	"BY_KEYWORD":"AND classes.class LIKE '%{fk}%'",
+	"SORT_ORDER":"ORDER BY classes.class_id {so}",
+	"INSERT_ROW":"INSERT INTO classes ('class', 'category') VALUES ('{new-value}', 2)",
+	"SELECT_RAW":"SELECT classes.class AS f1 FROM classes WHERE class_id = {id}",
+	"UPDATE_ROW":"UPDATE classes SET class = '{f1}' WHERE class_id = {id}",
+	"DELETE_ROW":"DELETE FROM classes WHERE class_id = {id}",
+	"SELECT_OPT":[]}
+},
+{"HTM_OBJECT":{
+	"object-show":"block",
+	"HOST_UC":6,
+	"form-show-1":"block",
+	"form-label-1":"products.type"
+},
+"HTM_NAVDIV":{
+	"cfg-show":"block",
+	"cfg-title":"_product @ classes",
+	"cfg-menu-left-1":"block",
+	"cfg-menu-left-3":"block",
+	"cfg-menu-left-4":"block",
+	"cfg-menu-left-5":"block",
+	"cfg-menu-right-1":"block",
+	"so":"DESC"
+},
+"SQL_CLAUSE":{
+	"SELECT_ROW":"SELECT '6' AS THIS_UC, classes.class_id AS id, classes.class AS f1, '_product @ classes' AS host_title FROM classes, classes meta WHERE classes.category = meta.class_id AND meta.class = '_product'",
+	"BY_HOST_ID":"AND classes.class_id = {id}",
+	"BY_ROW_IDX":"AND classes.class_id = {id}",
+	"BY_KEYWORD":"AND classes.class LIKE '%{fk}%'",
+	"SORT_ORDER":"ORDER BY classes.class_id {so}",
+	"INSERT_ROW":"INSERT INTO classes ('class', 'category') VALUES ('{new-value}', 3)",
+	"SELECT_RAW":"SELECT classes.class AS f1 FROM classes WHERE class_id = {id}",
+	"UPDATE_ROW":"UPDATE classes SET class = '{f1}' WHERE class_id = {id}",
+	"DELETE_ROW":"DELETE FROM classes WHERE class_id = {id}",
+	"SELECT_OPT":[]}
+},
+{"HTM_OBJECT":{
+	"object-show":"block",
+	"HOST_UC":7,
+	"form-show-1":"block",
+	"form-label-1":"products.location"
+},
+"HTM_NAVDIV":{
+	"cfg-show":"block",
+	"cfg-title":"_location @ classes",
+	"cfg-menu-left-1":"block",
+	"cfg-menu-left-2":"block",
+	"cfg-menu-left-3":"block",
+	"cfg-menu-left-4":"block",
+	"cfg-menu-right-1":"block",
+	"so":"DESC"
+},
+"SQL_CLAUSE":{
+	"SELECT_ROW":"SELECT '7' AS THIS_UC, classes.class_id AS id, classes.class AS f1, '_location @ classes' AS host_title FROM classes, classes meta WHERE classes.category = meta.class_id AND meta.class = '_location'",
+	"BY_HOST_ID":"AND classes.class_id = {id}",
+	"BY_ROW_IDX":"AND classes.class_id = {id}",
+	"BY_KEYWORD":"AND classes.class LIKE '%{fk}%'",
+	"SORT_ORDER":"ORDER BY classes.class_id {so}",
+	"INSERT_ROW":"INSERT INTO classes ('class', 'category') VALUES ('{new-value}', 4)",
+	"SELECT_RAW":"SELECT classes.class AS f1 FROM classes WHERE class_id = {id}",
+	"UPDATE_ROW":"UPDATE classes SET class = '{f1}' WHERE class_id = {id}",
+	"DELETE_ROW":"DELETE FROM classes WHERE class_id = {id}",
+	"SELECT_OPT":[]}
+},
+{"HTM_OBJECT":{
+	"object-show":"block",
+	"HOST_UC":8,
+	"LINK_UC":9,
+	"form-show-1":"block",
+	"form-label-1":"process: product.task",
+	"obj-menu-right-3":"block"
+},
+"HTM_NAVDIV":{
+	"cfg-show":"block",
+	"cfg-title":"_process @ classes",
+	"cfg-menu-left-1":"block",
+	"cfg-menu-left-2":"block",
+	"cfg-menu-left-4":"block",
+	"cfg-menu-left-5":"block",
+	"cfg-menu-right-1":"block",
+	"so":"DESC"
+},
+"SQL_CLAUSE":{
+	"SELECT_ROW":"SELECT '8' AS THIS_UC, classes.class_id AS id, classes.class AS f1, '_process @ classes' AS host_title FROM classes, classes meta WHERE classes.category = meta.class_id AND meta.class = '_process'",
+	"BY_HOST_ID":"AND classes.class_id = {id}",
+	"BY_ROW_IDX":"AND classes.class_id = {id}",
+	"BY_KEYWORD":"AND classes.class LIKE '%{fk}%'",
+	"SORT_ORDER":"ORDER BY classes.class_id {so}",
+	"INSERT_ROW":"INSERT INTO classes ('class', 'category') VALUES ('{new-value}', 6)",
+	"SELECT_RAW":"SELECT classes.class AS f1 FROM classes WHERE class_id = {id}",
+	"UPDATE_ROW":"UPDATE classes SET class = '{f1}' WHERE class_id = {id}",
+	"DELETE_ROW":"DELETE FROM classes WHERE class_id = {id}",
+	"SELECT_OPT":[]}
+},
+{"HTM_OBJECT":{
+	"object-show":"block",
+	"HOST_UC":8,
+	"form-show-1":"block",
+	"form-label-1":"process: products.task"
+},
+"HTM_NAVDIV":{
+	"cfg-show":"block",
+	"cfg-title":"_process:task @ classes",
+	"cfg-menu-left-1":"block",
+	"cfg-menu-left-2":"block",
+	"cfg-menu-left-3":"block",
+	"cfg-menu-left-4":"block",
+	"cfg-menu-right-1":"block",
+	"so":"DESC"
+},
+"SQL_CLAUSE":{
+	"SELECT_ROW":"SELECT '9' AS THIS_UC, classes.class_id AS id, classes.class AS f1, meta.class AS host_title, classes.category AS host_id FROM classes, classes meta WHERE classes.category = meta.class_id AND meta.category = 6",
+	"BY_HOST_ID":"AND classes.category = {id}",
+	"BY_ROW_IDX":"AND classes.class_id = {id}",
+	"BY_KEYWORD":"AND classes.class LIKE '%{fk}%'",
+	"SORT_ORDER":"ORDER BY classes.class_id {so}",
+	"INSERT_ROW":"INSERT INTO classes ('class', 'category') VALUES ('{new-value}', {hi})",
+	"SELECT_RAW":"SELECT classes.class AS f1 FROM classes WHERE class_id = {id}",
+	"UPDATE_ROW":"UPDATE classes SET class = '{f1}' WHERE class_id = {id}",
+	"DELETE_ROW":"DELETE FROM classes WHERE class_id = {id}",
+	"SELECT_OPT":[]}
+},
+{"HTM_OBJECT":{
+	"object-show":"block",
+	"HOST_UC":2,
+	"form-show-2":"block",
+	"form-label-2":"Process"
+},
+"HTM_NAVDIV":{
+	"nav-show":"block",
+	"nav-title":"Tasks",
+	"nav-menu-left-1":"block",
+	"nav-menu-left-2":"block",
+	"nav-menu-left-4":"block",
+	"nav-menu-left-5":"block",
+	"show_active":"none",
+	"so":"DESC"
+},
+"SQL_CLAUSE":{
+	"SELECT_ROW":"SELECT products.product AS host_title, 'Process' AS f1, '{new-value}' AS f2, '10' AS THIS_UC, {id} AS host_id, '1' AS special FROM products WHERE products.product_id = {id}",
+	"BY_ROW_IDX":"",
+	"SPECIAL_FN":"INSERT INTO tasks ('task', 'object', 'owner', 'active') SELECT classes.class, {id}, 1, 0  FROM classes WHERE classes.category = {f2}",
+	"SELECT_OPT":["SELECT '<option value=\"' || classes.class_id || '\">' || classes.class || '</option>' AS 'form-options-2' FROM classes WHERE classes.category = 6"]}
+}
+]
