@@ -3,8 +3,8 @@ A CODE REVIEW - PROOF-OF-CONCEPT - UNDER CONSTRUCTION
 ## About
 Single-user browser-based organizer for simple project management.
 <p align="center">
-  <img src="docs/silta-1.png" width="496px">
-  <img src="docs/silta-2.png" width="496px">
+  <img src="docs/silta-1.png" width="320px">
+  <img src="docs/silta-2.png" width="320px">
 </p>
 
 ## Background
