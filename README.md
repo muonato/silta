@@ -5,6 +5,7 @@ Single-user browser-based organizer for simple project management.
 <p align="center">
   <img src="docs/silta-1.png" width="320px">
   <img src="docs/silta-2.png" width="320px">
+  <img src="docs/silta-3.png" width="320px">
 </p>
 
 ## Background
