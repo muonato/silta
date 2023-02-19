@@ -6,6 +6,7 @@ Single-user browser-based organizer for simple project management.
   <img src="docs/silta-1.png" width="496px">
   <img src="docs/silta-2.png" width="496px">
 </p>
+
 ## Background
 Python project SILTA began in early 2022 from a request to help manage Digital Forensics Incident Response (DFIR) workflow. Inspired by the *Kirjuri* application *(github.com/AnttiKurittu/kirjuri)* the objective became to develop a personal organizer application for DFIR projects.
 
