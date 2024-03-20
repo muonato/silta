@@ -1,5 +1,5 @@
 # SILTA - Simple Localized Tasks
-A CODE REVIEW, PROOF-OF-CONCEPT UNDER CONSTRUCTION
+UNDER CONSTRUCTION / CODE REVIEW
 ## About
 Lite browser-based personal task organizer
 <p align="center">
