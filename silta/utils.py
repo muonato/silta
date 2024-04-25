@@ -28,7 +28,7 @@ def htm_data(folder):
     """Reads user interface templates file.
 
     Args:
-        folder -- JSON file without suffix
+        folder -- Path to JSON file (without suffix)
 
     """
     return load_json(f"{folder}.json")
