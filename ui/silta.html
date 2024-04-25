@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<!--SIMPLE LOCALIZED TASKS
+     github/muonato/silta
+-->
+<html lang="en">
+{HEAD}
+<body>
+<!-- PAGE -->
+    <div id="page">
+        <div id="topmenu">
+            <div class="nav_wrap">
+                <div title="Home" class="nav_left">
+                    <div class="nav_logo"><a href="/?uc=1">SILTA</a>
+                    </div>
+                </div>
+                <div title="Menu" class="nav_right">
+                    <div class="nav_menu">
+                        <div class="dropdown">
+                            <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
+                            <img height="24px" class="icon clck dropbtn" onclick="doDrop('settings-menu')" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAYAgMAAADv1rfdAAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAVSURBVAjXY1gFAwzYWNQB+O2gq20ABnQ7xfSM79oAAAAASUVORK5CYII=" />
+                            <div id="settings-menu" class="dropdown-content blue dropdown-right">
+                                <a href="/?uc=2">Help</a>
+                                <a href="/?uc=2">About</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- TOPMENU END -->
+<!-- NOTIFY -->
+        <div id="notify" class="notf {note-css}" style="display: {show-notify}">{note-msg}
+        </div>
+<!-- NOTIFY END -->
+<!-- TOOLBAR -->
+        <div class="view data" style="display: {show-toolbar}">
+            <div id="nav-main" class="norm">
+                <div title="Database" class="inln bold">
+                    <img height="24px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkAgMAAACcbnALAAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAB3SURBVBjTlVBBDsAgCGs8+hRe6Xmv4Eh45aCyabbDMhOworRSAM3dweVeUIiMd5ppoEfkWSHKx93AUhZRBLFvNStSJAlJYUF7RAisU0MDUS4ysiH7J+JHPtBLTZ5qPtXaUkth/aNxz1aTi21u0Bym5Vo5OS5TA5ynKVthO5vRbAAAAABJRU5ErkJggg==" />&nbsp;&nbsp;{db}
+                </div>
+                <div title="New task" class="bold inln fltr">
+                    <a href="/?uc=9">+</a>
+                </div>
+                <div title="New template" class="fltr bold clck">
+                    <a href="/?uc=11">
+                        <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoAgMAAADxkFD+AAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAABLSURBVBjTY2BgWgUBCxjgzBUMDFxQ5iogs4EBDLRwMFcQxdRqoIzJBHYXcUzKbSPNb1iY8OBbgQjUFQxITDjAzlyFiBUtBJMLzgQA5mJrO9eopjEAAAAASUVORK5CYII=" height="24px" />                      
+                    </a>
+                </div>
+                <div title="Templates" class="fltr bold clck">
+                    <a href="/?uc=14">
+                        <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoAgMAAADxkFD+AAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAABKSURBVBjTY2BgWgUBCxjgzBUMDFxQ5iogs4EBDLRwMFcQwWQCm0ocE6ilgWHAmcT7DSsTHnwrEIG6ggGJCQfYmasQsaKFYHLBmQD0cGs7cTLdWQAAAABJRU5ErkJggg==" height="24px" />                      
+                    </a>
+                </div>
+                <div title="Search" class="inln fltr clck" onclick="showdiv('nav-form', 'nav-main')">
+                        <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
+                        <img height="24px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAgMAAAAOFJJnAAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAGBJREFUGNONjkEOACEIAxuPvmTDK3nKHk1fuVDEZG8SjYPWUgBcUE3SBSTfPAdz5Uu0JvDa6vJWMBJkcmBdwO/X8bEecWaNEFUyRkaBdcTIXB4pNeyavkGO6KmqK9HTgA+PZSQJvfuT3gAAAABJRU5ErkJggg==" />
+                </div>
+            </div>
+<!-- SEARCH -->
+            <div id="nav-form" class="hide">
+                <div class="inln full">
+                    <div title="Close" class="fltr bold clck" onclick="showdiv('nav-main', 'nav-form')">x
+                    </div>
+                </div>
+                <form id="search" action="/">
+                    <input type="hidden" name="uc" value="17">
+                    <div class="grid">
+                        <div class="inln">
+                            <label for="fk">Search</label>
+                            <div title="Search" class="inln mgnl">
+                                <button class="button" type="submit">
+                                    <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
+                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkAgMAAACcbnALAAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAABeSURBVBjTrdDBDQAhCARA4utCKVRJKT7JVnmArjYg8TEJmwiIYdUUKgQsCVllD6RO2RHYHUHppMxbs2KlzORroWLdhWesZRP7N0VsjdxrTwCn7Ez1vdqtdK92L6nUD7plSWVUMh1AAAAAAElFTkSuQmCC" height="16px">
+                                </button>
+                            </div>
+                            <input type="text" id="find-keyword" name="fk" placeholder="Keyword" value="">
+                        </div>
+                        <div class="inln">
+                            <label for="so">Sort</label>
+                            <select id="sort-order" name="so">
+                                <option value="DESC" selected>Descending</option>
+                                <option value="ASC">Ascending</option>
+                            </select>
+                        </div>
+                    </div>
+                </form> 
+            </div>
+<!-- END SEARCH -->
+        </div>
+<!-- END TOOLBAR -->
+<!-- TASK -->
+        <div class="view data" style="display: {show-task}">
+            <div id="object-main" class="norm">
+                <div class="inln bold">
+                    <a style="color: white" href="/?{prev_uc}">&lt;</a>&nbsp;{task_type}&#58;&nbsp;{task_name}
+                </div>
+                <div title="Status" style="display: {task_done}" class="inln fltr">
+                    <form id="view-status-{ti}" action="/">
+                        <input type="hidden" name="uc" value="13">
+                        <input type="hidden" name="ti" value="{task_id}">
+                        <input type="hidden" name="td" value="0">
+                        <input type="hidden" name="fw" value="{fw}">
+                        <input type="hidden" name="th" value="{task_id}">
+                        <label class="switch">
+                            <input type="checkbox" name="td" value="1" {task_done} onchange="fsubmit('view-status-{ti}')">
+                            <span class="slider round"></span>
+                        </label>
+                    </form>
+                </div>
+                <div title="Maximize" class="inln fltr bold clck" onclick="showdiv('object-edit', 'object-main')">&#709;
+                </div>
+                <div title="New task" class="fltr bold clck">
+                    <a href="/?uc=8&ti={task_id}">+</a>
+                </div>
+                <div title="Templates" class="fltr bold clck">
+                    <a href="/?uc=15&ti={task_id}">
+                        <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoAgMAAADxkFD+AAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAABKSURBVBjTY2BgWgUBCxjgzBUMDFxQ5iogs4EBDLRwMFcQwWQCm0ocE6ilgWHAmcT7DSsTHnwrEIG6ggGJCQfYmasQsaKFYHLBmQD0cGs7cTLdWQAAAABJRU5ErkJggg==" height="24px" />                      
+                    </a>
+                </div>
+            </div>
+<!-- TASK EDIT -->
+<!-- NEW ATTR -->
+            <div id="attr-edit" class="hide">
+                <div class="inln full">
+                    <div class="inln bold">{task_name}&#58;&nbsp;New attribute
+                    </div>
+                    <div title="Close" class="fltr bold clck" onclick="showdiv('object-edit', 'attr-edit')">x
+                    </div>
+                </div>
+                <form id="search" action="/">
+                    <input type="hidden" name="uc" value="5">
+                    <input type="hidden" name="fw" value="4">
+                    <input type="hidden" name="th" value="{task_id}">
+                    <div class="grid">
+                        <div title="Attribute type" class="inln">
+                            <label for="at">Type</label>
+                            <div title="Delete" class="inln mgnl deny">
+                                    <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoAgMAAADxkFD+AAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAACQSURBVBjTbZHLEcAgCEQZjpZClZbC0bHK7EISdzLxgA/kr5mZ7z2tz8ZpGsQsDDy32elYwsaqp3xEGzqR0/nOg8tXY0wbeWdPG9OhlIxJl5JRwUhDxE2tMJIFNhRUYsUgduuF3WJjrD88DhL2JHtLfAqfdk6T0rqfgWRMGV5XIouS9clSsWoErO8HyLeQ6XkBuldVZ5TNOVQAAAAASUVORK5CYII=" height="16px" />
+                            </div>
+                            <div title="Save" class="inln mgnl">
+                                <button class="button" type="submit">
+                                    <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
+                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkAgMAAACcbnALAAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAABeSURBVBjTrdDBDQAhCARA4utCKVRJKT7JVnmArjYg8TEJmwiIYdUUKgQsCVllD6RO2RHYHUHppMxbs2KlzORroWLdhWesZRP7N0VsjdxrTwCn7Ez1vdqtdK92L6nUD7plSWVUMh1AAAAAAElFTkSuQmCC" height="16px">
+                                </button>
+                            </div>
+                            <select name="at">
+                                <option value="TEXT" selected>Textbox</option>
+                                <option value="NOTE">Textarea</option>
+                            </select>
+                        </div>
+                        <div title="Attribute name" class="inln">
+                            <label for="an">Name</label>
+                            <div title="Delete" class="inln mgnl deny">
+                                    <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoAgMAAADxkFD+AAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAACQSURBVBjTbZHLEcAgCEQZjpZClZbC0bHK7EISdzLxgA/kr5mZ7z2tz8ZpGsQsDDy32elYwsaqp3xEGzqR0/nOg8tXY0wbeWdPG9OhlIxJl5JRwUhDxE2tMJIFNhRUYsUgduuF3WJjrD88DhL2JHtLfAqfdk6T0rqfgWRMGV5XIouS9clSsWoErO8HyLeQ6XkBuldVZ5TNOVQAAAAASUVORK5CYII=" height="16px" />
+                            </div>
+                            <div title="Save" class="inln mgnl">
+                                <button class="button" type="submit">
+                                    <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
+                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkAgMAAACcbnALAAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAABeSURBVBjTrdDBDQAhCARA4utCKVRJKT7JVnmArjYg8TEJmwiIYdUUKgQsCVllD6RO2RHYHUHppMxbs2KlzORroWLdhWesZRP7N0VsjdxrTwCn7Ez1vdqtdK92L6nUD7plSWVUMh1AAAAAAElFTkSuQmCC" height="16px">
+                                </button>
+                            </div>
+                            <input type="text" name="an" value="(new)" required>
+                        </div>
+                        
+                    </div>
+                </form> 
+            </div>
+<!-- NEW ATTR END -->
+            <div id="object-edit" class="hide">
+                <div class="inln full">
+                    <div class="inln bold"><a style="color: white" href="/?{prev_uc}">&lt;</a>&nbsp;{task_type}&#58;&nbsp;{task_name}
+                    </div>
+                    <div title="Status" style="display: {task_done}" class="inln fltr">
+                        <form id="edit-status-{ti}" action="/">
+                            <input type="hidden" name="uc" value="13">
+                            <input type="hidden" name="ti" value="{task_id}">
+                            <input type="hidden" name="td" value="0">
+                            <input type="hidden" name="fw" value="{fw}">
+                            <input type="hidden" name="th" value="{task_id}">
+                            <label class="switch">
+                                <input type="checkbox" name="td" value="1" {task_done} onchange="fsubmit('edit-status-{ti}')">
+                                <span class="slider round"></span>
+                            </label>
+                        </form>
+                    </div>
+                    <div title="Minimize" class="fltr bold clck" onclick="showdiv('object-main', 'object-edit')">&#708;
+                    </div>
+                    <div title="New attribute" class="fltr clck" onclick="showdiv('attr-edit', 'object-edit')">
+                            <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkAgMAAACcbnALAAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAABFSURBVBjTY9BatWrVAgamBQwMCNYqOGsFAwjgZYG04WYRawoGC2hCA4iHnQUBWmSxQL5bhZNFvsmrYADsfRBYwcAFYwEAYlFPSSBclg8AAAAASUVORK5CYII=" height="24px" />                      
+                    </div>
+                    <div title="Delete task" class="fltr bold clck"> 
+                        <a href="/?uc=10&ti={ti}" onclick="return confirm('Delete task - are you sure ?')">
+                            <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAgMAAAAOFJJnAAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAADVJREFUGNNjYGDgWrVqAQOYAoEFWBhMIHkGrgYGBgiDASuDqYGpYXAzcDse4lNkhhaIXsEAAIzuPsfAItJzAAAAAElFTkSuQmCC" height="24px" />                      
+                        </a>                    
+                    </div>
+                </div>
+<!-- ATTR GRID -->
+                <div class="grid">
+<!-- TASK NAME -->
+                    <div class="inln">
+                        <form id="task-name" action="/">
+                            <label for="label-task-name">Task name</label>
+                            <div title="Delete" class="inln mgnl deny">
+                                    <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoAgMAAADxkFD+AAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAACQSURBVBjTbZHLEcAgCEQZjpZClZbC0bHK7EISdzLxgA/kr5mZ7z2tz8ZpGsQsDDy32elYwsaqp3xEGzqR0/nOg8tXY0wbeWdPG9OhlIxJl5JRwUhDxE2tMJIFNhRUYsUgduuF3WJjrD88DhL2JHtLfAqfdk6T0rqfgWRMGV5XIouS9clSsWoErO8HyLeQ6XkBuldVZ5TNOVQAAAAASUVORK5CYII=" height="16px" />
+                            </div>
+                            <div title="Save" class="inln mgnl">
+                                <button class="button" type="submit">
+                                    <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
+                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkAgMAAACcbnALAAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAABeSURBVBjTrdDBDQAhCARA4utCKVRJKT7JVnmArjYg8TEJmwiIYdUUKgQsCVllD6RO2RHYHUHppMxbs2KlzORroWLdhWesZRP7N0VsjdxrTwCn7Ez1vdqtdK92L6nUD7plSWVUMh1AAAAAAElFTkSuQmCC" height="16px">
+                                </button>
+                            </div>
+							<input type="hidden" name="uc" value="12">
+							<input type="hidden" name="ti" value="{task_id}">
+                            <input type="text" pattern="[^'\\]+" name="tn" value="{task_name}" required>
+                        </form>
+                    </div>
+<!-- END TASK NAME -->
+{TEXT}
+                </div>
+<!-- ATTR GRID END -->
+<!-- NOTE -->
+{NOTE}
+<!-- NOTE END -->
+            </div>
+<!-- TASK EDIT END -->
+        </div>
+<!-- TASK END -->
+<!-- SUB-TASKS -->
+{TASK}
+<!-- SUB-TASKS END -->
+    </div>
+<!-- PAGE END -->
+</body>
+</html>
