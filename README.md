@@ -5,13 +5,8 @@ Personal browser-based task organizer
 
 Python study SILTA is inspired by the *Kirjuri* application *(github.com/AnttiKurittu/kirjuri)*
 
-## A ~~Work~~ Hobby In Progress
-The first version in testing. (25-APR-2024)
-
-
-## Design philosophy
-Have fun by learning to code.
-
+## Changelog
+First version in testing. (25-APR-2024)
 
 ## Requirements
 Current version is based on Python 3.9.5 and SQLite database.
