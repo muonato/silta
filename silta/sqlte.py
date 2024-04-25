@@ -1,28 +1,35 @@
 #!/usr/bin/env python3
-#
-# SIMPLE LOCALIZED TASKS
-# Copyright 2022 muonato
-#   GNU License GPL v3
+# github/muonato/silta
+# www.gnu.org/licenses
 
+"""Silta SQLite database routines.
+
+Exports class Silta() as facade to application.
+
+Usage:
+    database = SQLiteDB('/path/to/dbase')
+
+"""
 import sqlite3
 
-class DB_SQLite:
+class SQLiteDB:
     """Handle sqlite3 database connection.
 
     Args:
-        f: Database filename
+        f -- Database filename
+
     """
+    def __init__(self, f):
+        self.name = f
+        self.conn = sqlite3.connect(f)
 
-    def __init__(self, f):                           
-        self.con = sqlite3.connect(f)
-
-        # Create new DB from schema when given file missing
+        # create new database from default schema if missing
         if self.runsql("SELECT * FROM sqlite_master") == []:
             with open("data/silta.db.sql") as create_db:
                 self.runsql(create_db.read())
 
     def __del__(self):
-        self.con.close()
+        self.conn.close()
 
     def dicto(self, dict_arr):
         """Merge list of dictionaries with string values only.
@@ -50,18 +57,19 @@ class DB_SQLite:
         Returns:
             Results as list of dictionaries, dict lambda by 
             https://stackoverflow.com/users/3419103/falko
+
         """
         try:
-            self.con.row_factory = lambda C, R: {
+            self.conn.row_factory = lambda C, R: {
                 c[0]: R[i] for i, c in enumerate(C.description)
             }
-            c = self.con.cursor()
+            c = self.conn.cursor()
             if sql_cmd.startswith("BEGIN"):
                 c.executescript(sql_cmd)
             else:
                 c.execute(sql_cmd, ())
 
-            self.con.commit()
+            self.conn.commit()
             fetch = c.fetchall()
 
             return self.dicto(fetch) if to_dict else fetch

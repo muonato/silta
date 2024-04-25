@@ -1,26 +1,59 @@
 #!/usr/bin/env python3
-#
-# SIMPLE LOCALIZED TASKS
-# Copyright 2022 muonato
-#   GNU License GPL v3
+# github/muonato/silta
+# www.gnu.org/licenses
 
+"""Silta utility functions and constants.
+
+"""
+import time
 import json
 
-ATTR_FILE = "data/silta.json"
+def load_json(json_file):
+    """Reads JSON formatted text file.
 
-def load_attr(lang_file):
+    Args:
+        json_file -- filename to read
+    """
     try:
-        with open(lang_file) as f:
-            lang = json.load(f)
-            
+        with open(json_file) as f:
+            fstr = json.load(f)
+
     except FileNotFoundError:
-        lang = []
+        fstr = []
 
-    with open(ATTR_FILE) as f:
-        attr = json.load(f)
+    return fstr
 
-    for i, d in enumerate(lang):
-        for key in ["HTM_COMMON", "HTM_OBJECT", "HTM_NAVDIV"]:
-            if key in d:
-                attr[i][key].update(d[key])
-    return attr
+
+def htm_data(folder):
+    """Reads user interface templates file.
+
+    Args:
+        folder -- JSON file without suffix
+
+    """
+    return load_json(f"{folder}.json")
+
+def err_message(errstr):
+    """Prints error message from exception.
+
+    Args:
+        errstr -- error string (err=)
+
+    """
+    print("\033[1;31mException\033[0m - - {} {}".format(
+        time.strftime("[%d/%b/%Y %H:%M:%S]", time.localtime()), errstr))
+
+    # UI template
+    message = {
+        "note-css":"fail",
+        "show-notify":"block",
+        "show-toolbar":"none",
+        "show-task":"none",
+        "note-msg":errstr,
+        "TASK":""
+    }
+
+    return message
+
+LOGIC_F = load_json("data/logic.json")
+TEMPLATE_KEYS = ["BODY", "TASK", "TEXT", "NOTE", "NONE"]
