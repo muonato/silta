@@ -4,7 +4,7 @@
 Personal task organizer
 
 ## Background
-Python project SILTA began in early 2022 from the need to help manage Computer Forensics workflow. Inspired by the *Kirjuri* application *(github.com/AnttiKurittu/kirjuri)* the objective became to develop a personal organizer application for tasks.
+Python study SILTA is inspired by the *Kirjuri* application *(github.com/AnttiKurittu/kirjuri)* and the aim is to develop a browser-based personal task organizer application.
 
 ## A ~~Work~~ Hobby In Progress
 The first version in testing. (25-APR-2024)
