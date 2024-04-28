@@ -19,8 +19,7 @@
                             <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
                             <img height="24px" class="icon clck dropbtn" onclick="doDrop('settings-menu')" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAYAgMAAADv1rfdAAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAVSURBVAjXY1gFAwzYWNQB+O2gq20ABnQ7xfSM79oAAAAASUVORK5CYII=" />
                             <div id="settings-menu" class="dropdown-content blue dropdown-right">
-                                <a href="/?uc=2">Help</a>
-                                <a href="/?uc=2">About</a>
+                                <a href="/?uc=19">About</a>
                             </div>
                         </div>
                     </div>
@@ -75,7 +74,7 @@
                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkAgMAAACcbnALAAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAABeSURBVBjTrdDBDQAhCARA4utCKVRJKT7JVnmArjYg8TEJmwiIYdUUKgQsCVllD6RO2RHYHUHppMxbs2KlzORroWLdhWesZRP7N0VsjdxrTwCn7Ez1vdqtdK92L6nUD7plSWVUMh1AAAAAAElFTkSuQmCC" height="16px">
                                 </button>
                             </div>
-                            <input type="text" id="find-keyword" name="fk" placeholder="Keyword" value="">
+                            <input type="text" id="find-keyword" name="fk" value="keyword">
                         </div>
                         <div class="inln">
                             <label for="so">Sort</label>
@@ -94,9 +93,9 @@
         <div class="view data" style="display: {show-task}">
             <div id="object-main" class="norm">
                 <div class="inln bold">
-                    <a style="color: white" href="/?{prev_uc}">&lt;</a>&nbsp;{task_type}&#58;&nbsp;{task_name}
+                    <a style="color: white" href="/?{prev_uc}">&lt;</a>&nbsp;{task_type}&nbsp;{task_name}
                 </div>
-                <div title="Status" style="display: {task_done}" class="inln fltr">
+                <div title="Status update" style="display: {task_done}" class="inln fltr">
                     <form id="view-status-{ti}" action="/">
                         <input type="hidden" name="uc" value="13">
                         <input type="hidden" name="ti" value="{task_id}">
@@ -112,12 +111,18 @@
                 <div title="Maximize" class="inln fltr bold clck" onclick="showdiv('object-edit', 'object-main')">&#709;
                 </div>
                 <div title="New task" class="fltr bold clck">
-                    <a href="/?uc=8&ti={task_id}">+</a>
+                    <a href="/?uc={new_task}&ti={task_id}">+</a>
                 </div>
-                <div title="Templates" class="fltr bold clck">
+                <div title="Summary" class="fltr bold clck" style="display: {show-templates}">
+                    <a href="/?uc=18&ti={task_id}">
+                        <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAoAgMAAADvWWBNAAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAABkSURBVBjTvdFLCsAgDATQwVXJUXJK8SRZhjll/YeWLtpNA5qHqMEI1CBWCO2BWnxkkqjDL6wzS5sAl5Zp+pGrzq/Ee0pQc9Big28mDqb2uhy0++rs/DoWN4iNps5qOtn/pPMAThGKVFPaYcsfAAAAAElFTkSuQmCC" height="24px" />
+                    </a>
+                </div>
+                <div title="Templates" class="fltr bold clck" style="display: {show-templates}">
                     <a href="/?uc=15&ti={task_id}">
                         <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoAgMAAADxkFD+AAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAABKSURBVBjTY2BgWgUBCxjgzBUMDFxQ5iogs4EBDLRwMFcQwWQCm0ocE6ilgWHAmcT7DSsTHnwrEIG6ggGJCQfYmasQsaKFYHLBmQD0cGs7cTLdWQAAAABJRU5ErkJggg==" height="24px" />                      
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoAgMAAADxkFD+AAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAABKSURBVBjTY2BgWgUBCxjgzBUMDFxQ5iogs4EBDLRwMFcQwWQCm0ocE6ilgWHAmcT7DSsTHnwrEIG6ggGJCQfYmasQsaKFYHLBmQD0cGs7cTLdWQAAAABJRU5ErkJggg==" height="24px" />
                     </a>
                 </div>
             </div>
@@ -130,9 +135,9 @@
                     <div title="Close" class="fltr bold clck" onclick="showdiv('object-edit', 'attr-edit')">x
                     </div>
                 </div>
-                <form id="search" action="/">
+                <form id="attr-name" action="/">
                     <input type="hidden" name="uc" value="5">
-                    <input type="hidden" name="fw" value="4">
+                    <input type="hidden" name="fw" value="{uc}">
                     <input type="hidden" name="th" value="{task_id}">
                     <div class="grid">
                         <div title="Attribute type" class="inln">
@@ -164,18 +169,17 @@
                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkAgMAAACcbnALAAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAABeSURBVBjTrdDBDQAhCARA4utCKVRJKT7JVnmArjYg8TEJmwiIYdUUKgQsCVllD6RO2RHYHUHppMxbs2KlzORroWLdhWesZRP7N0VsjdxrTwCn7Ez1vdqtdK92L6nUD7plSWVUMh1AAAAAAElFTkSuQmCC" height="16px">
                                 </button>
                             </div>
-                            <input type="text" name="an" value="(new)" required>
+                            <input type="text" name="an" placeholder="Unknown" required>
                         </div>
-                        
                     </div>
                 </form> 
             </div>
 <!-- NEW ATTR END -->
             <div id="object-edit" class="hide">
                 <div class="inln full">
-                    <div class="inln bold"><a style="color: white" href="/?{prev_uc}">&lt;</a>&nbsp;{task_type}&#58;&nbsp;{task_name}
+                    <div class="inln bold"><a style="color: white" href="/?{prev_uc}">&lt;</a>&nbsp;{task_type}&nbsp;{task_name}
                     </div>
-                    <div title="Status" style="display: {task_done}" class="inln fltr">
+                    <div title="Status update" style="display: {task_done}" class="inln fltr">
                         <form id="edit-status-{ti}" action="/">
                             <input type="hidden" name="uc" value="13">
                             <input type="hidden" name="ti" value="{task_id}">
@@ -218,9 +222,24 @@
                                 </button>
                             </div>
 							<input type="hidden" name="uc" value="12">
+							<input type="hidden" name="fw" value="{uc}">
+							<input type="hidden" name="th" value="{task_id}">
 							<input type="hidden" name="ti" value="{task_id}">
                             <input type="text" pattern="[^'\\]+" name="tn" value="{task_name}" required>
                         </form>
+                    </div>
+                    <div class="inln">
+                        <div class="inln">Status update
+                        </div>
+                        <div title="Delete" class="inln mgnl deny">
+                            <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoAgMAAADxkFD+AAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAACQSURBVBjTbZHLEcAgCEQZjpZClZbC0bHK7EISdzLxgA/kr5mZ7z2tz8ZpGsQsDDy32elYwsaqp3xEGzqR0/nOg8tXY0wbeWdPG9OhlIxJl5JRwUhDxE2tMJIFNhRUYsUgduuF3WJjrD88DhL2JHtLfAqfdk6T0rqfgWRMGV5XIouS9clSsWoErO8HyLeQ6XkBuldVZ5TNOVQAAAAASUVORK5CYII=" height="16px" />
+                        </div>
+                        <div title="Save" class="inln mgnl deny">
+                            <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkAgMAAACcbnALAAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAABeSURBVBjTrdDBDQAhCARA4utCKVRJKT7JVnmArjYg8TEJmwiIYdUUKgQsCVllD6RO2RHYHUHppMxbs2KlzORroWLdhWesZRP7N0VsjdxrTwCn7Ez1vdqtdK92L6nUD7plSWVUMh1AAAAAAElFTkSuQmCC" height="16px">
+                        </div>
+                        <input type="text" id="dt" value="{datetime}" disabled>
                     </div>
 <!-- END TASK NAME -->
 {TEXT}
