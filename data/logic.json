@@ -21,27 +21,36 @@
     "show-toolbar":"block",
     "show-task":"none"},
 "TEMPLATES":{
-    "TASK":["SELECT tasks.task_id, '1' AS fw, '4&ti='||tasks.task_id AS alt_uc, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name FROM tasks WHERE tasks.task_host IS NULL AND tasks.task_id NOT IN (SELECT tasks.task_id FROM tasks, attrs WHERE tasks.task_id = attrs.attr_host AND attrs.attr_type = 'TMPL');"]}
+    "TASK":["SELECT DISTINCT tasks.task_id, '1' AS fw, '4&ti='||tasks.task_id AS alt_uc, dt.attr_data AS datetime, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name FROM tasks, attrs, attrs dt WHERE dt.attr_type = 'TIME' AND dt.attr_host = tasks.task_id AND tasks.task_host IS NULL AND tasks.task_id NOT IN (SELECT tasks.task_id FROM tasks, attrs WHERE tasks.task_id = attrs.attr_host AND attrs.attr_type = 'TMPL');"]}
 },
 {"METADATA":{
     "use-case-id":2,
-    "description":"About SILTA",
-    "daisy-chain":1},
+    "description":"New sub-template",
+    "daisy-chain":3},
 "F-STRINGS":{
     "uc":"2",
-    "note-css":"info",
-    "show-notify":"block",
-    "note-msg":"SILTA - Simple Localized Tasks<br/>Version 1.0 (24-APR-2024)<br/>Homepage&nbsp;<a href='https://github.com/muonato/silta'><u>github.com/muonato/silta</u></a><br/>GNU General Public License GPLv3\n"},
-"TEMPLATES":{}
+    "show-toolbar":"none",
+    "show-task":"block"},
+"TEMPLATES":{
+    "NONE":["INSERT INTO tasks ('task_host') VALUES ({ti});","INSERT INTO attrs ('attr_host', 'attr_type', 'attr_name', 'attr_data') VALUES ({ti}, 'TIME', 'Last status', 'Template');"]}
 },
 {"METADATA":{
     "use-case-id":3,
-    "description":"Nothing",
+    "description":"Show template",
     "daisy-chain":0},
 "F-STRINGS":{
-    "uc":"3"},
+    "uc":"3",
+    "note-css":"warn",
+    "show-templates":"none",
+    "show-notify":"block",
+    "note-msg":"Select <strong>[+]</strong> to append new task or maximize <strong>[v]</strong> to edit template \"{task_name}\" ",
+    "show-toolbar":"none",
+    "show-task":"block"},
 "TEMPLATES":{
-    "NONE":[""]}
+    "BODY":["SELECT '2' AS new_task, '3' AS fw, tasks.task_id, tasks.task_host, IIF(tasks.task_done = 1, 'checked', '') AS task_done, 'Template&#58;' AS task_type, tasks.task_name, 'Template' AS datetime, IIF(tasks.task_host IS NULL, 'uc=1', 'uc=3&ti='||tasks.task_host) AS prev_uc FROM tasks WHERE tasks.task_id = {ti} "],
+    "TASK":["SELECT '3' AS fw, '3&ti='||tasks.task_id AS alt_uc, tasks.task_host, tasks.task_id, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name, 'Template' AS datetime FROM tasks WHERE tasks.task_host = {ti};"],
+    "TEXT":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'TEXT' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
+    "NOTE":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'NOTE' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"]}
 },
 {"METADATA":{
     "use-case-id":4,
@@ -50,10 +59,11 @@
 "F-STRINGS":{
     "uc":"4",
     "show-toolbar":"none",
+    "show-templates":"block",
     "show-task":"block"},
 "TEMPLATES":{
-    "BODY":["SELECT '{uc}' AS fw, tasks.task_id, tasks.task_host, IIF(tasks.task_done = 1, 'checked', '') AS task_done, IIF((SELECT attr_type FROM attrs WHERE attr_host = {ti}) = 'TMPL','Template','Task') AS task_type, tasks.task_name, IIF(tasks.task_host IS NULL, 'uc=1', 'uc=4&ti='||tasks.task_host) AS prev_uc FROM tasks WHERE tasks.task_id = {ti};"],
-    "TASK":["SELECT '{uc}' AS fw, '4&ti='||tasks.task_id AS alt_uc, tasks.task_host, tasks.task_id, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name FROM tasks WHERE tasks.task_host = {ti};"],
+    "BODY":["SELECT '8' AS new_task, '4' AS fw, tasks.task_id, tasks.task_host, IIF(tasks.task_done = 1, 'checked', '') AS task_done, '' AS task_type, tasks.task_name, dt.attr_data AS datetime, IIF(tasks.task_host IS NULL, 'uc=1', 'uc=4&ti='||tasks.task_host) AS prev_uc FROM tasks, attrs dt WHERE dt.attr_type = 'TIME' AND dt.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
+    "TASK":["SELECT DISTINCT '4' AS fw, '4&ti='||tasks.task_id AS alt_uc, tasks.task_host, tasks.task_id, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name, dt.attr_data AS datetime FROM tasks, attrs dt WHERE dt.attr_type = 'TIME' AND dt.attr_host = {ti} AND tasks.task_host = {ti}"],
     "TEXT":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'TEXT' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
     "NOTE":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'NOTE' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"]}
 },
@@ -99,7 +109,7 @@
     "show-toolbar":"none",
     "show-task":"block"},
 "TEMPLATES":{
-    "NONE":["INSERT INTO tasks ('task_host') VALUES ('{ti}');"]}
+    "NONE":["INSERT INTO tasks ('task_host') VALUES ('{ti}');","INSERT INTO attrs ('attr_host', 'attr_type', 'attr_name', 'attr_data') VALUES (last_insert_rowid(), 'TIME', 'Last status', strftime('%d.%m.%Y %H:%M', current_timestamp, 'localtime'));"]}
 },
 {"METADATA":{
     "use-case-id":9,
@@ -110,7 +120,7 @@
     "show-toolbar":"none",
     "show-task":"none"},
 "TEMPLATES":{
-    "NONE":["INSERT INTO tasks ('task_host') VALUES (NULL);"]}
+    "NONE":["INSERT INTO tasks ('task_host') VALUES (NULL);","INSERT INTO attrs ('attr_host', 'attr_type', 'attr_name', 'attr_data') VALUES (last_insert_rowid(), 'TIME', 'Last status', strftime('%d.%m.%Y %H:%M', current_timestamp, 'localtime'));"]}
 },
 {"METADATA":{
     "use-case-id":10,
@@ -121,7 +131,7 @@
     "show-toolbar":"none",
     "show-task":"block"},
 "TEMPLATES":{
-    "NONE":["WITH RECURSIVE attr_chain(n) AS (VALUES({ti}) UNION SELECT attr_id FROM attrs, attr_chain WHERE attrs.attr_host=attr_chain.n) DELETE FROM attrs WHERE attrs.attr_id IN attr_chain;","WITH RECURSIVE task_chain(n) AS (VALUES({ti}) UNION SELECT task_id FROM tasks, task_chain WHERE tasks.task_host=task_chain.n) DELETE FROM tasks WHERE tasks.task_id IN task_chain;"]}
+    "NONE":["WITH RECURSIVE task_chain(n) AS (VALUES(1) UNION SELECT task_id FROM tasks, task_chain WHERE tasks.task_host=task_chain.n) DELETE FROM attrs WHERE attrs.attr_host IN task_chain;","WITH RECURSIVE task_chain(n) AS (VALUES({ti}) UNION SELECT task_id FROM tasks, task_chain WHERE tasks.task_host=task_chain.n) DELETE FROM tasks WHERE tasks.task_id IN task_chain;"]}
 },
 {"METADATA":{
     "use-case-id":11,
@@ -132,12 +142,12 @@
     "show-toolbar":"block",
     "show-task":"none"},
 "TEMPLATES":{
-    "NONE":["INSERT INTO tasks ('task_host') VALUES (NULL);","INSERT INTO attrs ('attr_host','attr_type') VALUES (last_insert_rowid(), 'TMPL');","SELECT last_insert_rowid() AS ti;"]}
+    "NONE":["INSERT INTO tasks ('task_host') VALUES (NULL);","SELECT last_insert_rowid() AS ti;","INSERT INTO attrs ('attr_host','attr_type') VALUES (last_insert_rowid(), 'TMPL');","INSERT INTO attrs ('attr_host', 'attr_type', 'attr_name', 'attr_data') VALUES ((SELECT seq FROM SQLITE_SEQUENCE WHERE name='tasks'), 'TIME', 'Last status', 'Template');"]}
 },
 {"METADATA":{
     "use-case-id":12,
     "description":"Task name",
-    "daisy-chain":4},
+    "daisy-chain":0},
 "F-STRINGS":{
     "uc":"12",
     "show-toolbar":"none",
@@ -152,7 +162,7 @@
 "F-STRINGS":{
     "uc":"13"},
 "TEMPLATES":{
-    "NONE":["WITH RECURSIVE task_chain(n) AS (VALUES({ti}) UNION SELECT task_id FROM tasks, task_chain WHERE tasks.task_host=task_chain.n) UPDATE tasks SET task_done = {td} WHERE tasks.task_id IN task_chain;"]}
+    "NONE":["WITH RECURSIVE task_chain(n) AS (VALUES({ti}) UNION SELECT task_id FROM tasks, task_chain WHERE tasks.task_host=task_chain.n) UPDATE tasks SET task_done = {td} WHERE tasks.task_id IN task_chain;","UPDATE attrs SET attr_data = strftime('%d.%m.%Y %H:%M', current_timestamp, 'localtime') WHERE attr_type = 'TIME' AND attr_host = {ti};"]}
 },
 {"METADATA":{
     "use-case-id":14,
@@ -160,13 +170,13 @@
     "daisy-chain":0},
 "F-STRINGS":{
     "uc":"14",
-    "note-css":"info",
+    "note-css":"warn",
     "show-notify":"block",
-    "note-msg":"Select template to edit or [+] to create new",
+    "note-msg":"Select template to modify or <strong>[+]</strong> to create new",
     "show-toolbar":"block",
     "show-task":"none"},
 "TEMPLATES":{
-    "TASK":["SELECT DISTINCT tasks.task_id, '{uc}' AS fw, '4&ti='||tasks.task_id AS alt_uc, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name FROM tasks, attrs WHERE tasks.task_host IS NULL AND tasks.task_id = attrs.attr_host AND attrs.attr_type = 'TMPL';"]}
+    "TASK":["SELECT tasks.task_id, '{uc}' AS fw, '3&ti='||tasks.task_id AS alt_uc, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name, 'Template' AS datetime FROM tasks, attrs WHERE tasks.task_host IS NULL AND tasks.task_id = attrs.attr_host AND attrs.attr_type = 'TMPL';"]}
 },
 {"METADATA":{
     "use-case-id":15,
@@ -174,14 +184,14 @@
     "daisy-chain":0},
 "F-STRINGS":{
     "uc":"15",
-    "note-css":"info",
+    "note-css":"warn",
     "show-notify":"block",
-    "note-msg":"Select template to merge with task",
+    "note-msg":"Select template to append to \"{task_name}\"",
     "show-toolbar":"none",
     "show-task":"block"},
 "TEMPLATES":{
-    "BODY":["SELECT '{uc}' AS fw, tasks.task_id, tasks.task_host, IIF(tasks.task_done = 1, 'checked', '') AS task_done, IIF((SELECT attr_type FROM attrs WHERE attr_host = {ti}) = 'TMPL','Template','Task') AS task_type, tasks.task_name, IIF(tasks.task_host IS NULL, 'uc=1', 'uc=4&ti='||tasks.task_host) AS prev_uc FROM tasks WHERE tasks.task_id = {ti};"],
-    "TASK":["SELECT DISTINCT tasks.task_id, '{uc}' AS fw, '16&fw=4&th={ti}&ti='||tasks.task_id AS alt_uc, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name FROM tasks, attrs WHERE tasks.task_host IS NULL AND tasks.task_id = attrs.attr_host AND attrs.attr_type = 'TMPL';"],
+    "BODY":["SELECT '{uc}' AS fw, tasks.task_id, tasks.task_host, IIF(tasks.task_done = 1, 'checked', '') AS task_done, IIF((SELECT attr_type FROM attrs WHERE attr_host = {ti}) = 'TMPL','Template&#58;','') AS task_type, tasks.task_name, IIF(tasks.task_host IS NULL, 'uc=1', 'uc=4&ti='||tasks.task_host) AS prev_uc FROM tasks WHERE tasks.task_id = {ti};"],
+    "TASK":["SELECT tasks.task_id, '{uc}' AS fw, '16&fw=4&th={ti}&ti='||tasks.task_id AS alt_uc, IIF(tasks.task_done = 1, 'checked', '') AS task_done, 'Template' AS datetime, tasks.task_name FROM tasks, attrs WHERE tasks.task_host IS NULL AND tasks.task_id = attrs.attr_host AND attrs.attr_type = 'TMPL';"],
     "TEXT":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'TEXT' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
     "NOTE":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'NOTE' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"]}
 },
@@ -203,6 +213,34 @@
     "show-toolbar":"block",
     "show-task":"none"},
 "TEMPLATES":{
-    "TASK":["SELECT DISTINCT tasks.task_id, '1' AS fw, '4&ti='||tasks.task_id AS alt_uc, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name FROM tasks, attrs WHERE tasks.task_name LIKE '%{fk}%' OR (attrs.attr_data LIKE '%{fk}%' AND attrs.attr_host = tasks.task_id) ORDER BY tasks.task_id {so}"]}
+    "TASK":["SELECT DISTINCT tasks.task_id, '1' AS fw, '4&ti='||tasks.task_id AS alt_uc, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name, datetime(attrs.attr_data,'localtime') AS datetime FROM tasks, attrs WHERE tasks.task_name LIKE '%{fk}%' OR (attrs.attr_data LIKE '%{fk}%' AND attrs.attr_host = tasks.task_id) ORDER BY tasks.task_id {so}"]}
+},
+{"METADATA":{
+    "use-case-id":18,
+    "description":"",
+    "daisy-chain":0},
+"F-STRINGS":{
+    "uc":"18",
+    "note-css":"info",
+    "show-notify":"block",
+    "note-msg":"<strong>{timestamp}</strong>&nbsp;&nbsp;-&nbsp;{task_name}\n\t\t\t<div>&nbsp;</div>\n\t\t\t<textarea>{SUMM}\n\t\t\t</textarea>",
+    "show-toolbar":"none",
+    "show-task":"none",
+    "TASK":""},
+"TEMPLATES":{
+    "BODY":["SELECT task_name, strftime('%d.%m.%Y %H:%M', current_timestamp, 'localtime') AS timestamp FROM tasks WHERE tasks.task_id = {ti};"],
+    "SUMM":["WITH RECURSIVE task_chain(n) AS (VALUES({ti}) UNION SELECT task_id FROM tasks, task_chain WHERE tasks.task_host=task_chain.n) SELECT at.attr_data AS timestamp, tasks.task_name, IIF(tasks.task_done = 1, '(/) READY', '(!) PENDING') AS task_done FROM tasks, attrs at WHERE at.attr_host = tasks.task_id AND at.attr_type = 'TIME' AND tasks.task_id IN task_chain;"]}
+},
+{"METADATA":{
+    "use-case-id":19,
+    "description":"About SILTA",
+    "daisy-chain":1},
+"F-STRINGS":{
+    "uc":"19",
+    "note-css":"info",
+    "show-notify":"block",
+    "note-msg":"SILTA - Simple Localized Tasks<br/>Version 1.0 (28-APR-2024)<br/>Homepage&nbsp;<a href='https://github.com/muonato/silta'><u>github.com/muonato/silta</u></a><br/>GNU General Public License GPLv3\n",
+    "show-summary":"none"},
+"TEMPLATES":{}
 }
 ]
