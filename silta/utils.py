@@ -28,7 +28,7 @@ def htm_data(folder):
     """Reads user interface templates file.
 
     Args:
-        folder -- Path to JSON file (without suffix)
+        folder -- JSON file without suffix
 
     """
     return load_json(f"{folder}.json")
@@ -55,5 +55,11 @@ def err_message(errstr):
 
     return message
 
+def timestamp():
+    """Returns localtime formatted.
+
+    """
+    return time.strftime("%d.%m.%Y %H:%M", time.localtime())
+
 LOGIC_F = load_json("data/logic.json")
-TEMPLATE_KEYS = ["BODY", "TASK", "TEXT", "NOTE", "NONE"]
+TEMPLATE_KEYS = ["BODY", "TASK", "TEXT", "NOTE", "SUMM", "NONE"]

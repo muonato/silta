@@ -107,11 +107,14 @@ class Silta:
                 if attr["attr_host"] == data["task_id"]:
                     attr.update({"attr_host":next_id})
 
-                if attr["attr_type"] != "TMPL":
-                    self.db.runsql(
-                        f"INSERT INTO tmp_attrs (attr_id, attr_host, attr_type, attr_name, attr_data) \
-                            VALUES ({attr['attr_id']}, {attr['attr_host']}, \
-                                \"{attr['attr_type']}\", \"{attr['attr_name']}\", \"{attr['attr_data']}\");")
+                    if attr["attr_type"] != "TMPL":
+                        if attr["attr_type"] == "TIME":
+                            attr.update({"attr_data":util.timestamp()})
+
+                        self.db.runsql(
+                            f"INSERT INTO tmp_attrs (attr_id, attr_host, attr_type, attr_name, attr_data) \
+                                VALUES ({attr['attr_id']}, {attr['attr_host']}, \
+                                    \"{attr['attr_type']}\", \"{attr['attr_name']}\", \"{attr['attr_data']}\");")
 
             for host in task_chain:            
                 if host["task_host"] == data["task_id"]:
@@ -155,7 +158,8 @@ class Silta:
             self.ui.html_reload()
             self.ui.html_update(self.fs)
 
-            # run sql command and export result to templates
+            # export data
+            sql_data = []
             for template,sql in self.uc[queue]["TEMPLATES"].items():
                 for cmd in sql:
                     sql_data = self.db.runsql(
@@ -163,7 +167,7 @@ class Silta:
 
                     self.ui.html_export(sql_data, template)
 
-            # add template
+            # special case
             if queue == 16:
                 self.add_template(sql_data)
 
