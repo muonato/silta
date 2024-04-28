@@ -1,7 +1,7 @@
 # SILTA - Simple Localized Tasks
 
 ## About
-Personal browser-based task organizer
+Single-user task organizer for web browser
 
 Python study SILTA is inspired by the *Kirjuri* application *(github.com/AnttiKurittu/kirjuri)*
 
@@ -11,7 +11,7 @@ Update (28-APR-2024):
   - Added task summary display
   - Changed visuals
   
-First version in testing (25-APR-2024)
+Testing version 1.0 (25-APR-2024)
 
 ## Requirements
 Current version is based on Python 3.9.5 and SQLite database.
