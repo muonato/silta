@@ -7,9 +7,9 @@ Python study SILTA is inspired by the *Kirjuri* application *(github.com/AnttiKu
 
 ## Changelog
 Update (28-APR-2024):
-  Added status timestamp display
-  Added task summary display
-  Changed visuals
+  - Added status timestamp display
+  - Added task summary display
+  - Changed visuals
   
 First version in testing (25-APR-2024)
 
