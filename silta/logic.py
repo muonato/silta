@@ -71,7 +71,7 @@ class Silta:
 
         except Exception as err:
             self.ui.html_update(
-                util.err_message(f"{err=}"))
+                util.err_message(f"{err}"))
 
         # finalize result page
         self.ui.html_public()

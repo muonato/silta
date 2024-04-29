@@ -52,7 +52,7 @@ class Frontend:
             self.TEMPL["BODY"] = f.read()
 
     def html_public(self):
-        """Adds header to finalize HTML output page.
+        """Adds header to finalize output HTML page.
 
         Args:
             none
@@ -81,7 +81,7 @@ class Frontend:
 
         Args:
             params -- List of dictionaries with f-string values
-            template -- Template dict key (same as f-string tag)
+            template --Template dict key (same as f-string tag)
 
         Returns:
             Calls function html_update

@@ -75,6 +75,6 @@ class SQLiteDB:
             return self.dicto(fetch) if to_dict else fetch
 
         except BaseException as err:
-            print(f"dbase.py {err=}")
+            print(f"dbase.py {err}")
 
             return []
