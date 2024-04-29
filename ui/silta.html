@@ -113,11 +113,9 @@
                 <div title="New task" class="fltr bold clck">
                     <a href="/?uc={new_task}&ti={task_id}">+</a>
                 </div>
-                <div title="Summary" class="fltr bold clck" style="display: {show-templates}">
-                    <a href="/?uc=18&ti={task_id}">
+                <div title="Summary" class="fltr bold clck" style="display: {show-summary}" onclick="copyToClipboard('summary','Copy summary to clipboard')">
                         <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAoAgMAAADvWWBNAAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAABkSURBVBjTvdFLCsAgDATQwVXJUXJK8SRZhjll/YeWLtpNA5qHqMEI1CBWCO2BWnxkkqjDL6wzS5sAl5Zp+pGrzq/Ee0pQc9Big28mDqb2uhy0++rs/DoWN4iNps5qOtn/pPMAThGKVFPaYcsfAAAAAElFTkSuQmCC" height="24px" />
-                    </a>
                 </div>
                 <div title="Templates" class="fltr bold clck" style="display: {show-templates}">
                     <a href="/?uc=15&ti={task_id}">
@@ -239,7 +237,7 @@
                             <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
                             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkAgMAAACcbnALAAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAABeSURBVBjTrdDBDQAhCARA4utCKVRJKT7JVnmArjYg8TEJmwiIYdUUKgQsCVllD6RO2RHYHUHppMxbs2KlzORroWLdhWesZRP7N0VsjdxrTwCn7Ez1vdqtdK92L6nUD7plSWVUMh1AAAAAAElFTkSuQmCC" height="16px">
                         </div>
-                        <input type="text" id="dt" value="{datetime}" disabled>
+                        <input type="text" id="dt" value="{timestamp}" disabled>
                     </div>
 <!-- END TASK NAME -->
 {TEXT}
@@ -257,5 +255,8 @@
 <!-- SUB-TASKS END -->
     </div>
 <!-- PAGE END -->
+    <div style="display: none">
+        <textarea id="summary">{SUMM}</textarea>
+    </div>
 </body>
 </html>
