@@ -21,7 +21,7 @@
     "show-toolbar":"block",
     "show-task":"none"},
 "TEMPLATES":{
-    "TASK":["SELECT DISTINCT tasks.task_id, '1' AS fw, '4&ti='||tasks.task_id AS alt_uc, dt.attr_data AS datetime, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name FROM tasks, attrs, attrs dt WHERE dt.attr_type = 'TIME' AND dt.attr_host = tasks.task_id AND tasks.task_host IS NULL AND tasks.task_id NOT IN (SELECT tasks.task_id FROM tasks, attrs WHERE tasks.task_id = attrs.attr_host AND attrs.attr_type = 'TMPL');"]}
+    "TASK":["SELECT DISTINCT tasks.task_id, '1' AS fw, '4&ti='||tasks.task_id AS alt_uc, dt.attr_data AS timestamp, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name FROM tasks, attrs, attrs dt WHERE dt.attr_type = 'TIME' AND dt.attr_host = tasks.task_id AND tasks.task_host IS NULL AND tasks.task_id NOT IN (SELECT tasks.task_id FROM tasks, attrs WHERE tasks.task_id = attrs.attr_host AND attrs.attr_type = 'TMPL');"]}
 },
 {"METADATA":{
     "use-case-id":2,
@@ -32,7 +32,7 @@
     "show-toolbar":"none",
     "show-task":"block"},
 "TEMPLATES":{
-    "NONE":["INSERT INTO tasks ('task_host') VALUES ({ti});","INSERT INTO attrs ('attr_host', 'attr_type', 'attr_name', 'attr_data') VALUES ({ti}, 'TIME', 'Last status', 'Template');"]}
+    "NONE":["INSERT INTO tasks ('task_host') VALUES ({ti});","INSERT INTO attrs ('attr_host', 'attr_type', 'attr_name', 'attr_data') VALUES ((SELECT seq FROM SQLITE_SEQUENCE WHERE name='tasks'), 'TIME', 'Last status', 'Template');"]}
 },
 {"METADATA":{
     "use-case-id":3,
@@ -47,8 +47,8 @@
     "show-toolbar":"none",
     "show-task":"block"},
 "TEMPLATES":{
-    "BODY":["SELECT '2' AS new_task, '3' AS fw, tasks.task_id, tasks.task_host, IIF(tasks.task_done = 1, 'checked', '') AS task_done, 'Template&#58;' AS task_type, tasks.task_name, 'Template' AS datetime, IIF(tasks.task_host IS NULL, 'uc=1', 'uc=3&ti='||tasks.task_host) AS prev_uc FROM tasks WHERE tasks.task_id = {ti} "],
-    "TASK":["SELECT '3' AS fw, '3&ti='||tasks.task_id AS alt_uc, tasks.task_host, tasks.task_id, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name, 'Template' AS datetime FROM tasks WHERE tasks.task_host = {ti};"],
+    "BODY":["SELECT '2' AS new_task, '3' AS fw, tasks.task_id, tasks.task_host, IIF(tasks.task_done = 1, 'checked', '') AS task_done, 'Template&#58;' AS task_type, tasks.task_name, 'Template' AS timestamp, IIF(tasks.task_host IS NULL, 'uc=1', 'uc=3&ti='||tasks.task_host) AS prev_uc FROM tasks WHERE tasks.task_id = {ti} "],
+    "TASK":["SELECT '3' AS fw, '3&ti='||tasks.task_id AS alt_uc, tasks.task_host, tasks.task_id, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name, 'Template' AS timestamp FROM tasks WHERE tasks.task_host = {ti};"],
     "TEXT":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'TEXT' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
     "NOTE":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'NOTE' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"]}
 },
@@ -62,8 +62,9 @@
     "show-templates":"block",
     "show-task":"block"},
 "TEMPLATES":{
-    "BODY":["SELECT '8' AS new_task, '4' AS fw, tasks.task_id, tasks.task_host, IIF(tasks.task_done = 1, 'checked', '') AS task_done, '' AS task_type, tasks.task_name, dt.attr_data AS datetime, IIF(tasks.task_host IS NULL, 'uc=1', 'uc=4&ti='||tasks.task_host) AS prev_uc FROM tasks, attrs dt WHERE dt.attr_type = 'TIME' AND dt.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
-    "TASK":["SELECT DISTINCT '4' AS fw, '4&ti='||tasks.task_id AS alt_uc, tasks.task_host, tasks.task_id, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name, dt.attr_data AS datetime FROM tasks, attrs dt WHERE dt.attr_type = 'TIME' AND dt.attr_host = {ti} AND tasks.task_host = {ti}"],
+    "BODY":["SELECT '8' AS new_task, '4' AS fw, tasks.task_id, tasks.task_host, IIF(tasks.task_done = 1, 'checked', '') AS task_done, '' AS task_type, tasks.task_name, dt.attr_data AS timestamp, IIF(tasks.task_host IS NULL, 'uc=1', 'uc=4&ti='||tasks.task_host) AS prev_uc FROM tasks, attrs dt WHERE dt.attr_type = 'TIME' AND dt.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
+    "TASK":["SELECT DISTINCT '4' AS fw, '4&ti='||tasks.task_id AS alt_uc, tasks.task_host, tasks.task_id, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name, dt.attr_data AS timestamp FROM tasks, attrs dt WHERE dt.attr_type = 'TIME' AND dt.attr_host = tasks.task_id AND tasks.task_host = {ti}"],
+    "SUMM":["WITH RECURSIVE task_chain(n) AS (VALUES({ti}) UNION SELECT task_id FROM tasks, task_chain WHERE tasks.task_host=task_chain.n) SELECT at.attr_data AS timestamp, tasks.task_name, IIF(tasks.task_done = 1, '(/) READY', '(!) PENDING') AS task_done FROM tasks, attrs at WHERE at.attr_host = tasks.task_id AND at.attr_type = 'TIME' AND tasks.task_id IN task_chain;"],
     "TEXT":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'TEXT' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
     "NOTE":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'NOTE' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"]}
 },
@@ -142,7 +143,7 @@
     "show-toolbar":"block",
     "show-task":"none"},
 "TEMPLATES":{
-    "NONE":["INSERT INTO tasks ('task_host') VALUES (NULL);","SELECT last_insert_rowid() AS ti;","INSERT INTO attrs ('attr_host','attr_type') VALUES (last_insert_rowid(), 'TMPL');","INSERT INTO attrs ('attr_host', 'attr_type', 'attr_name', 'attr_data') VALUES ((SELECT seq FROM SQLITE_SEQUENCE WHERE name='tasks'), 'TIME', 'Last status', 'Template');"]}
+    "NONE":["INSERT INTO tasks ('task_host') VALUES (NULL);","INSERT INTO attrs ('attr_host','attr_type') VALUES ((SELECT seq FROM SQLITE_SEQUENCE WHERE name='tasks'), 'TMPL');","INSERT INTO attrs ('attr_host', 'attr_type', 'attr_name', 'attr_data') VALUES ((SELECT seq FROM SQLITE_SEQUENCE WHERE name='tasks'), 'TIME', 'Last status', 'Template');"]}
 },
 {"METADATA":{
     "use-case-id":12,
@@ -176,7 +177,7 @@
     "show-toolbar":"block",
     "show-task":"none"},
 "TEMPLATES":{
-    "TASK":["SELECT tasks.task_id, '{uc}' AS fw, '3&ti='||tasks.task_id AS alt_uc, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name, 'Template' AS datetime FROM tasks, attrs WHERE tasks.task_host IS NULL AND tasks.task_id = attrs.attr_host AND attrs.attr_type = 'TMPL';"]}
+    "TASK":["SELECT tasks.task_id, '{uc}' AS fw, '3&ti='||tasks.task_id AS alt_uc, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name, 'Template' AS timestamp FROM tasks, attrs WHERE tasks.task_host IS NULL AND tasks.task_id = attrs.attr_host AND attrs.attr_type = 'TMPL';"]}
 },
 {"METADATA":{
     "use-case-id":15,
@@ -191,7 +192,7 @@
     "show-task":"block"},
 "TEMPLATES":{
     "BODY":["SELECT '{uc}' AS fw, tasks.task_id, tasks.task_host, IIF(tasks.task_done = 1, 'checked', '') AS task_done, IIF((SELECT attr_type FROM attrs WHERE attr_host = {ti}) = 'TMPL','Template&#58;','') AS task_type, tasks.task_name, IIF(tasks.task_host IS NULL, 'uc=1', 'uc=4&ti='||tasks.task_host) AS prev_uc FROM tasks WHERE tasks.task_id = {ti};"],
-    "TASK":["SELECT tasks.task_id, '{uc}' AS fw, '16&fw=4&th={ti}&ti='||tasks.task_id AS alt_uc, IIF(tasks.task_done = 1, 'checked', '') AS task_done, 'Template' AS datetime, tasks.task_name FROM tasks, attrs WHERE tasks.task_host IS NULL AND tasks.task_id = attrs.attr_host AND attrs.attr_type = 'TMPL';"],
+    "TASK":["SELECT tasks.task_id, '{uc}' AS fw, '16&fw=4&th={ti}&ti='||tasks.task_id AS alt_uc, IIF(tasks.task_done = 1, 'checked', '') AS task_done, 'Template' AS timestamp, tasks.task_name FROM tasks, attrs WHERE tasks.task_host IS NULL AND tasks.task_id = attrs.attr_host AND attrs.attr_type = 'TMPL';"],
     "TEXT":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'TEXT' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
     "NOTE":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'NOTE' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"]}
 },
@@ -213,23 +214,15 @@
     "show-toolbar":"block",
     "show-task":"none"},
 "TEMPLATES":{
-    "TASK":["SELECT DISTINCT tasks.task_id, '1' AS fw, '4&ti='||tasks.task_id AS alt_uc, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name, datetime(attrs.attr_data,'localtime') AS datetime FROM tasks, attrs WHERE tasks.task_name LIKE '%{fk}%' OR (attrs.attr_data LIKE '%{fk}%' AND attrs.attr_host = tasks.task_id) ORDER BY tasks.task_id {so}"]}
+    "TASK":["SELECT DISTINCT tasks.task_id, '1' AS fw, '4&ti='||tasks.task_id AS alt_uc, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name, datetime(attrs.attr_data,'localtime') AS timestamp FROM tasks, attrs WHERE tasks.task_name LIKE '%{fk}%' OR (attrs.attr_data LIKE '%{fk}%' AND attrs.attr_host = tasks.task_id) ORDER BY tasks.task_id {so}"]}
 },
 {"METADATA":{
     "use-case-id":18,
-    "description":"",
+    "description":"Empty",
     "daisy-chain":0},
 "F-STRINGS":{
-    "uc":"18",
-    "note-css":"info",
-    "show-notify":"block",
-    "note-msg":"<strong>{timestamp}</strong>&nbsp;&nbsp;-&nbsp;{task_name}\n\t\t\t<div>&nbsp;</div>\n\t\t\t<textarea>{SUMM}\n\t\t\t</textarea>",
-    "show-toolbar":"none",
-    "show-task":"none",
-    "TASK":""},
-"TEMPLATES":{
-    "BODY":["SELECT task_name, strftime('%d.%m.%Y %H:%M', current_timestamp, 'localtime') AS timestamp FROM tasks WHERE tasks.task_id = {ti};"],
-    "SUMM":["WITH RECURSIVE task_chain(n) AS (VALUES({ti}) UNION SELECT task_id FROM tasks, task_chain WHERE tasks.task_host=task_chain.n) SELECT at.attr_data AS timestamp, tasks.task_name, IIF(tasks.task_done = 1, '(/) READY', '(!) PENDING') AS task_done FROM tasks, attrs at WHERE at.attr_host = tasks.task_id AND at.attr_type = 'TIME' AND tasks.task_id IN task_chain;"]}
+    "uc":"18"},
+"TEMPLATES":{}
 },
 {"METADATA":{
     "use-case-id":19,
