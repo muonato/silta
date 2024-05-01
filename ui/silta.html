@@ -67,7 +67,7 @@
                     <input type="hidden" name="uc" value="17">
                     <div class="grid">
                         <div class="inln">
-                            <label for="fk">Search</label>
+                            <label for="find-keyword">Search</label>
                             <div title="Search" class="inln mgnl">
                                 <button class="button" type="submit">
                                     <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
@@ -77,7 +77,7 @@
                             <input type="text" id="find-keyword" name="fk" value="keyword">
                         </div>
                         <div class="inln">
-                            <label for="so">Sort</label>
+                            <label for="sort-order">Sort</label>
                             <select id="sort-order" name="so">
                                 <option value="DESC" selected>Descending</option>
                                 <option value="ASC">Ascending</option>
@@ -102,8 +102,8 @@
                         <input type="hidden" name="td" value="0">
                         <input type="hidden" name="fw" value="{fw}">
                         <input type="hidden" name="th" value="{task_id}">
-                        <label class="switch">
-                            <input type="checkbox" name="td" value="1" {task_done} onchange="fsubmit('view-status-{ti}')">
+                        <label for="status" class="switch">
+                            <input id="status" type="checkbox" name="td" value="1" {task_done} onchange="fsubmit('view-status-{ti}')">
                             <span class="slider round"></span>
                         </label>
                     </form>
@@ -113,7 +113,7 @@
                 <div title="New task" class="fltr bold clck">
                     <a href="/?uc={new_task}&ti={task_id}">+</a>
                 </div>
-                <div title="Summary" class="fltr bold clck" style="display: {show-summary}" onclick="copyToClipboard('summary','Copy summary to clipboard')">
+                <div title="Summary" class="fltr bold clck" style="display: {show-summary}" onclick="showdiv('show-summary', ''); selectText('summary-text')">
                         <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAoAgMAAADvWWBNAAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAABkSURBVBjTvdFLCsAgDATQwVXJUXJK8SRZhjll/YeWLtpNA5qHqMEI1CBWCO2BWnxkkqjDL6wzS5sAl5Zp+pGrzq/Ee0pQc9Big28mDqb2uhy0++rs/DoWN4iNps5qOtn/pPMAThGKVFPaYcsfAAAAAElFTkSuQmCC" height="24px" />
                 </div>
@@ -133,13 +133,13 @@
                     <div title="Close" class="fltr bold clck" onclick="showdiv('object-edit', 'attr-edit')">x
                     </div>
                 </div>
-                <form id="attr-name" action="/">
+                <form id="attr-form" action="/">
                     <input type="hidden" name="uc" value="5">
                     <input type="hidden" name="fw" value="{uc}">
                     <input type="hidden" name="th" value="{task_id}">
                     <div class="grid">
                         <div title="Attribute type" class="inln">
-                            <label for="at">Type</label>
+                            <label for="attr-type">Type</label>
                             <div title="Delete" class="inln mgnl deny">
                                     <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoAgMAAADxkFD+AAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAACQSURBVBjTbZHLEcAgCEQZjpZClZbC0bHK7EISdzLxgA/kr5mZ7z2tz8ZpGsQsDDy32elYwsaqp3xEGzqR0/nOg8tXY0wbeWdPG9OhlIxJl5JRwUhDxE2tMJIFNhRUYsUgduuF3WJjrD88DhL2JHtLfAqfdk6T0rqfgWRMGV5XIouS9clSsWoErO8HyLeQ6XkBuldVZ5TNOVQAAAAASUVORK5CYII=" height="16px" />
@@ -150,13 +150,13 @@
                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkAgMAAACcbnALAAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAABeSURBVBjTrdDBDQAhCARA4utCKVRJKT7JVnmArjYg8TEJmwiIYdUUKgQsCVllD6RO2RHYHUHppMxbs2KlzORroWLdhWesZRP7N0VsjdxrTwCn7Ez1vdqtdK92L6nUD7plSWVUMh1AAAAAAElFTkSuQmCC" height="16px">
                                 </button>
                             </div>
-                            <select name="at">
+                            <select id="attr-type" name="at">
                                 <option value="TEXT" selected>Textbox</option>
                                 <option value="NOTE">Textarea</option>
                             </select>
                         </div>
                         <div title="Attribute name" class="inln">
-                            <label for="an">Name</label>
+                            <label for="attr-name">Name</label>
                             <div title="Delete" class="inln mgnl deny">
                                     <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoAgMAAADxkFD+AAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAACQSURBVBjTbZHLEcAgCEQZjpZClZbC0bHK7EISdzLxgA/kr5mZ7z2tz8ZpGsQsDDy32elYwsaqp3xEGzqR0/nOg8tXY0wbeWdPG9OhlIxJl5JRwUhDxE2tMJIFNhRUYsUgduuF3WJjrD88DhL2JHtLfAqfdk6T0rqfgWRMGV5XIouS9clSsWoErO8HyLeQ6XkBuldVZ5TNOVQAAAAASUVORK5CYII=" height="16px" />
@@ -167,7 +167,7 @@
                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkAgMAAACcbnALAAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAABeSURBVBjTrdDBDQAhCARA4utCKVRJKT7JVnmArjYg8TEJmwiIYdUUKgQsCVllD6RO2RHYHUHppMxbs2KlzORroWLdhWesZRP7N0VsjdxrTwCn7Ez1vdqtdK92L6nUD7plSWVUMh1AAAAAAElFTkSuQmCC" height="16px">
                                 </button>
                             </div>
-                            <input type="text" name="an" placeholder="Unknown" required>
+                            <input id="attr-name" type="text" name="an" placeholder="Unknown" required>
                         </div>
                     </div>
                 </form> 
@@ -184,8 +184,8 @@
                             <input type="hidden" name="td" value="0">
                             <input type="hidden" name="fw" value="{fw}">
                             <input type="hidden" name="th" value="{task_id}">
-                            <label class="switch">
-                                <input type="checkbox" name="td" value="1" {task_done} onchange="fsubmit('edit-status-{ti}')">
+                            <label for="status" class="switch">
+                                <input id="status" type="checkbox" name="td" value="1" {task_done} onchange="fsubmit('edit-status-{ti}')">
                                 <span class="slider round"></span>
                             </label>
                         </form>
@@ -207,8 +207,8 @@
                 <div class="grid">
 <!-- TASK NAME -->
                     <div class="inln">
-                        <form id="task-name" action="/">
-                            <label for="label-task-name">Task name</label>
+                        <form id="task-form" action="/">
+                            <label for="task-name">Task name</label>
                             <div title="Delete" class="inln mgnl deny">
                                     <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoAgMAAADxkFD+AAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAACQSURBVBjTbZHLEcAgCEQZjpZClZbC0bHK7EISdzLxgA/kr5mZ7z2tz8ZpGsQsDDy32elYwsaqp3xEGzqR0/nOg8tXY0wbeWdPG9OhlIxJl5JRwUhDxE2tMJIFNhRUYsUgduuF3WJjrD88DhL2JHtLfAqfdk6T0rqfgWRMGV5XIouS9clSsWoErO8HyLeQ6XkBuldVZ5TNOVQAAAAASUVORK5CYII=" height="16px" />
@@ -223,7 +223,7 @@
 							<input type="hidden" name="fw" value="{uc}">
 							<input type="hidden" name="th" value="{task_id}">
 							<input type="hidden" name="ti" value="{task_id}">
-                            <input type="text" pattern="[^'\\]+" name="tn" value="{task_name}" required>
+                            <input id="task-name" type="text" pattern="[^'\\]+" name="tn" value="{task_name}" required>
                         </form>
                     </div>
                     <div class="inln">
@@ -250,13 +250,18 @@
 <!-- TASK EDIT END -->
         </div>
 <!-- TASK END -->
+        <div id="show-summary" class="mgnl hide data">
+            <div class="inln full">Summary
+                <div title="Close" class="fltr bold clck" onclick="showdiv('', 'show-summary');">x
+                </div>
+            </div>
+            <textarea id="summary-text" rows="6">
+{SUMM}</textarea>
+        </div>
 <!-- SUB-TASKS -->
 {TASK}
 <!-- SUB-TASKS END -->
     </div>
 <!-- PAGE END -->
-    <div style="display: none">
-        <textarea id="summary">{SUMM}</textarea>
-    </div>
 </body>
 </html>
