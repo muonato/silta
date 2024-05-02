@@ -212,13 +212,17 @@
 "F-STRINGS":{
     "uc":"17",
     "show-toolbar":"block",
+    "note-css":"info",
+    "show-notify":"block",
+    "note-msg":"Searched in total <strong>{total_tasks}</strong> tasks and <strong>{total_attrs}</strong> attributes for \"{keyword}\" ",
     "show-task":"none"},
 "TEMPLATES":{
-    "TASK":["SELECT DISTINCT tasks.task_id, '1' AS fw, '4&ti='||tasks.task_id AS alt_uc, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name, '' AS timestamp FROM tasks, attrs WHERE tasks.task_name LIKE '%{fk}%' OR (attrs.attr_data LIKE '%{fk}%' AND attrs.attr_host = tasks.task_id) ORDER BY tasks.task_id {so}"]}
+    "BODY":["SELECT '{fk}' AS keyword", "SELECT COUNT(*) AS total_tasks FROM tasks", "SELECT COUNT(*) AS total_attrs FROM attrs"],
+    "TASK":["SELECT DISTINCT tasks.task_id, IIF(attrs.attr_data LIKE '%{fk}%' OR attrs.attr_name LIKE '%{fk}%','Attribute','Task name') AS timestamp, '1' AS fw, '4&ti='||tasks.task_id AS alt_uc, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name FROM tasks, attrs WHERE tasks.task_name LIKE '%{fk}%' OR (attrs.attr_name LIKE '%{fk}%' AND attrs.attr_host = tasks.task_id) OR (attrs.attr_data LIKE '%{fk}%' AND attrs.attr_host = tasks.task_id) ORDER BY tasks.task_id {so}"]}
 },
 {"METADATA":{
     "use-case-id":18,
-    "description":"Empty",
+    "description":"foobar",
     "daisy-chain":0},
 "F-STRINGS":{
     "uc":"18"},
@@ -232,7 +236,7 @@
     "uc":"19",
     "note-css":"info",
     "show-notify":"block",
-    "note-msg":"SILTA - Simple Localized Tasks<br/>Version 1.0 (28-APR-2024)<br/>Homepage&nbsp;<a href='https://github.com/muonato/silta'><u>github.com/muonato/silta</u></a><br/>GNU General Public License GPLv3\n",
+    "note-msg":"SILTA - Simple Localized Tasks<br/>Version 1.0 (02-MAY-2024)<br/>Homepage&nbsp;<a href='https://github.com/muonato/silta'><u>github.com/muonato/silta</u></a><br/>GNU General Public License GPLv3\n",
     "show-summary":"none"},
 "TEMPLATES":{}
 }
