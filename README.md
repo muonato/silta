@@ -6,10 +6,8 @@ Single-user task organizer for web browser
 Python study SILTA is inspired by the *Kirjuri* application *(github.com/AnttiKurittu/kirjuri)*
 
 ## Changelog
-Latest update (29-APR-2024):
-  - Added status timestamp display
-  - Added task summary to clipboard copy
-  - Changed notification visuals
+Latest update (02-MAY-2024):
+  - Improved search now finds keyword in task name, attribute name or value
 
 ## Requirements
 Current version is based on Python 3.9.5 and SQLite database.
