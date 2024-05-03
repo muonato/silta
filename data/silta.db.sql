@@ -12,8 +12,8 @@ CREATE TABLE IF NOT EXISTS "attrs" (
 	"attr_host"	INTEGER,
 	"attr_type"	TEXT,
 	"attr_name"	TEXT DEFAULT 'Unknown',
-	"attr_data"	TEXT DEFAULT '(new)',
-	FOREIGN KEY("attr_host") REFERENCES "tasks"("task_id"),
-	PRIMARY KEY("attr_id" AUTOINCREMENT)
+	"attr_data"	TEXT,
+	PRIMARY KEY("attr_id" AUTOINCREMENT),
+	FOREIGN KEY("attr_host") REFERENCES "tasks"("task_id")
 );
 COMMIT;
