@@ -10,7 +10,7 @@ Latest update (03-MAY-2024):
   - Modified task summary output to include column for notes attribute
 
 ## Requirements
-Current version is based on Python 3.9.5 and SQLite database.
+Current version is based on Python 3.9.2 with sqlite3 2.6.0 module
 
 
 ## Licensing
