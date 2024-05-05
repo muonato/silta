@@ -6,7 +6,7 @@ Single-user task organizer for web browser
 Python study SILTA is inspired by the *Kirjuri* application *(github.com/AnttiKurittu/kirjuri)*
 
 ## Documentation
-See [SILTA Wiki](https://github.com/muonato/silta/wiki/SILTA-Tutorial) for tutorial
+See [SILTA Wiki](https://github.com/muonato/silta/wiki/Tutorial) for tutorial
 
 ## Changelog
 Latest update (04-MAY-2024):
