@@ -96,6 +96,9 @@
     "daisy-chain":0},
 "F-STRINGS":{
     "uc":"7",
+    "note-css":"info",
+    "show-notify":"block",
+    "note-msg":"Attribute updated",
     "show-toolbar":"none",
     "show-task":"block"},
 "TEMPLATES":{
@@ -236,7 +239,7 @@
     "uc":"19",
     "note-css":"info",
     "show-notify":"block",
-    "note-msg":"SILTA - Simple Localized Tasks<br/>Version 1.0 (03-MAY-2024)<br/>Homepage&nbsp;<a href='https://github.com/muonato/silta'><u>github.com/muonato/silta</u></a><br/>GNU General Public License GPLv3\n",
+    "note-msg":"SILTA - Simple Localized Tasks<br/>Version 1.0 (06-MAY-2024)<br/>Documentation&nbsp;<a href='https://github.com/muonato/silta/wiki'><u>github.com/muonato/silta/wiki</u></a><br/>GNU General Public License GPLv3\n",
     "show-summary":"none"},
 "TEMPLATES":{}
 }
