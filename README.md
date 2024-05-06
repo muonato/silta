@@ -9,8 +9,8 @@ Python study SILTA is inspired by the *Kirjuri* application *(github.com/AnttiKu
 See [SILTA Wiki](https://github.com/muonato/silta/wiki/Tutorial) for tutorial
 
 ## Changelog
-Latest update (04-MAY-2024):
-  - Tutorial page added to SILTA Wiki
+Latest update (06-MAY-2024):
+  - User interface tweaks
 
 ## Requirements
 Current version was developed on Python 3.9.2 with sqlite3 modulve version 2.6.0
