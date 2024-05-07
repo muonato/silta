@@ -62,4 +62,4 @@ def timestamp():
     return time.strftime("%d.%m.%Y %H:%M", time.localtime())
 
 LOGIC_F = load_json("data/logic.json")
-TEMPLATE_KEYS = ["BODY", "TASK", "TEXT", "NOTE", "SUMM", "NONE"]
+TEMPLATE_KEYS = ["BODY", "TASK", "TEXT", "NOTE", "SUMM", "LINK", "HREF", "NONE"]

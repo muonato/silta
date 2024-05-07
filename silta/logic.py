@@ -115,6 +115,9 @@ class Silta:
                             f"INSERT INTO tmp_attrs (attr_id, attr_host, attr_type, attr_name, attr_data) \
                                 VALUES ({attr['attr_id']}, {attr['attr_host']}, \
                                     \"{attr['attr_type']}\", \"{attr['attr_name']}\", \"{attr['attr_data']}\");")
+# TESTING ONLY
+                        print(f"\033[1;33mattr data:\033[0m {attr}")
+#                        print(f"\033[1;33mDTA {template}:\033[0m {sql_data}")
 
             for host in task_chain:            
                 if host["task_host"] == data["task_id"]:
@@ -154,20 +157,29 @@ class Silta:
             self.fs.update(
                 self.uc[queue]["F-STRINGS"])
 
-            # put f-strings fresh
+# TESTING ONLY
+            print(f"\033[1;31m{self.uc[queue]['METADATA']['description']}\033[0m\n\033[1;33mself.fs:\033[0m {self.fs}")
+            # put body attributes
             self.ui.html_reload()
             self.ui.html_update(self.fs)
 
-            # export data
+            # to template
             sql_data = []
             for template,sql in self.uc[queue]["TEMPLATES"].items():
                 for cmd in sql:
                     sql_data = self.db.runsql(
                                     cmd.format(**self.fs))
 
+# TESTING ONLY
+                    print(f"\033[1;33mSQL {template}:\033[0m {cmd.format(**self.fs)}")
+                    print(f"\033[1;33mDTA {template}:\033[0m {sql_data}")
                     self.ui.html_export(sql_data, template)
 
-            # special case
+                    # export sql to body
+                    for data in sql_data:
+                        self.ui.html_update(data)
+
+            # task template
             if queue == 16:
                 self.add_template(sql_data)
 
@@ -183,3 +195,7 @@ class Silta:
                 if queue:
                     for data in sql_data:
                         self.fs.update(data)
+
+            # update unoccupied
+            self.ui.html_update(
+                self.uc[0]['F-STRINGS'])
