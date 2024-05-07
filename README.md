@@ -9,8 +9,9 @@ Python study SILTA is inspired by the *Kirjuri* application *(github.com/AnttiKu
 See [SILTA Wiki](https://github.com/muonato/silta/wiki/Tutorial) for tutorial
 
 ## Changelog
-Latest update (06-MAY-2024):
+Latest update (07-MAY-2024):
   - User interface tweaks
+  - Added attribute type for URL links
 
 ## Requirements
 Current version tested on Python 3.9.2 with sqlite3 module version 2.6.0
