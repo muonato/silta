@@ -153,6 +153,7 @@
                             <select id="attr-type" name="at">
                                 <option value="TEXT" selected>Text</option>
                                 <option value="NOTE">Note</option>
+                                <option value="LINK">Link</option>
                             </select>
                         </div>
                         <div title="Attribute name" class="inln">
@@ -167,7 +168,7 @@
                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkAgMAAACcbnALAAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAABeSURBVBjTrdDBDQAhCARA4utCKVRJKT7JVnmArjYg8TEJmwiIYdUUKgQsCVllD6RO2RHYHUHppMxbs2KlzORroWLdhWesZRP7N0VsjdxrTwCn7Ez1vdqtdK92L6nUD7plSWVUMh1AAAAAAElFTkSuQmCC" height="16px">
                                 </button>
                             </div>
-                            <input id="attr-name" type="text" name="an" placeholder="Unknown" required>
+                            <input id="attr-name" type="text" name="an" maxlength="30" placeholder="Unknown" required>
                         </div>
                     </div>
                 </form> 
@@ -241,6 +242,7 @@
                     </div>
 <!-- END TASK NAME -->
 {TEXT}
+{LINK}
                 </div>
 <!-- ATTR GRID END -->
 <!-- NOTE -->
@@ -260,6 +262,11 @@
 {SUMM}</textarea>
         </div>
 <!-- SUB-TASKS -->
+<!-- LINK -->
+		<div id="link-elem" class="view data" style="display: {show_link}">
+{HREF}
+		</div>
+<!-- LINK END -->
 {TASK}
 <!-- SUB-TASKS END -->
     </div>
