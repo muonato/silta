@@ -92,7 +92,7 @@
     "uc":"7",
     "note-css":"info",
     "show-notify":"block",
-    "note-msg":"Saved changes to attribute",
+    "note-msg":"Task updated",
     "show-task":"block"},
 "TEMPLATES":{
     "NONE":["UPDATE attrs SET attr_data = '{ad}' WHERE attr_id = {ai}"]}
@@ -122,7 +122,7 @@
     "daisy-chain":1},
 "F-STRINGS":{
     "uc":"10",
-    "show-task":"block"},
+    "show-task":"none"},
 "TEMPLATES":{
     "NONE":["WITH RECURSIVE task_chain(n) AS (VALUES(1) UNION SELECT task_id FROM tasks, task_chain WHERE tasks.task_host=task_chain.n) DELETE FROM attrs WHERE attrs.attr_host IN task_chain;","WITH RECURSIVE task_chain(n) AS (VALUES({ti}) UNION SELECT task_id FROM tasks, task_chain WHERE tasks.task_host=task_chain.n) DELETE FROM tasks WHERE tasks.task_id IN task_chain;"]}
 },
@@ -144,7 +144,7 @@
     "uc":"12",
     "note-css":"info",
     "show-notify":"block",
-    "note-msg":"Saved changes to task name",
+    "note-msg":"Task updated",
     "show-task":"block"},
 "TEMPLATES":{
     "NONE":["UPDATE tasks SET task_name = '{tn}' WHERE task_id = {ti}"]}
@@ -182,10 +182,12 @@
     "note-msg":"Select template to append to \"{task_name}\"",
     "show-task":"block"},
 "TEMPLATES":{
-    "BODY":["SELECT '{uc}' AS fw, tasks.task_id, tasks.task_host, IIF(tasks.task_done = 1, 'checked', '') AS task_done, IIF((SELECT attr_type FROM attrs WHERE attr_host = {ti}) = 'TMPL','Template&#58;','') AS task_type, tasks.task_name, IIF(tasks.task_host IS NULL, 'uc=1', 'uc=4&ti='||tasks.task_host) AS prev_uc FROM tasks WHERE tasks.task_id = {ti};"],
+    "BODY":["SELECT '{uc}' AS fw, tasks.task_id, tasks.task_host, dt.attr_data AS timestamp, IIF(tasks.task_done = 1, 'checked', '') AS task_done, IIF((SELECT attr_type FROM attrs WHERE attr_host = {ti}) = 'TMPL','Template&#58;','') AS task_type, tasks.task_name, IIF(tasks.task_host IS NULL, 'uc=1', 'uc=4&ti='||tasks.task_host) AS prev_uc FROM tasks, attrs dt WHERE dt.attr_type = 'TIME' AND dt.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
     "TASK":["SELECT tasks.task_id, '{uc}' AS fw, '16&fw=4&th={ti}&ti='||tasks.task_id AS alt_uc, IIF(tasks.task_done = 1, 'checked', '') AS task_done, 'Template' AS timestamp, tasks.task_name FROM tasks, attrs WHERE tasks.task_host IS NULL AND tasks.task_id = attrs.attr_host AND attrs.attr_type = 'TMPL';"],
     "TEXT":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'TEXT' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
-    "NOTE":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'NOTE' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"]}
+    "NOTE":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'NOTE' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
+    "LINK":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'LINK' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
+    "HREF":["SELECT attrs.attr_data AS link_href, attrs.attr_name AS link_name, 'block' AS show_link FROM attrs, tasks WHERE attrs.attr_type = 'LINK' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"]}
 },
 {"METADATA":{
     "use-case-id":16,
