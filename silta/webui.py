@@ -51,6 +51,8 @@ class Frontend:
         with open(f"{html_home}.html") as f:
             self.TEMPL["BODY"] = f.read()
 
+        self.html = self.TEMPL["BODY"]
+
     def html_public(self):
         """Adds header to finalize output HTML page.
 
