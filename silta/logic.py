@@ -115,9 +115,6 @@ class Silta:
                             f"INSERT INTO tmp_attrs (attr_id, attr_host, attr_type, attr_name, attr_data) \
                                 VALUES ({attr['attr_id']}, {attr['attr_host']}, \
                                     \"{attr['attr_type']}\", \"{attr['attr_name']}\", \"{attr['attr_data']}\");")
-# TESTING ONLY
-                        print(f"\033[1;33mattr data:\033[0m {attr}")
-#                        print(f"\033[1;33mDTA {template}:\033[0m {sql_data}")
 
             for host in task_chain:            
                 if host["task_host"] == data["task_id"]:
@@ -153,21 +150,11 @@ class Silta:
         """
         queue = self.ix
 
-        # update unoccupied
-#        self.ui.html_update(
-#            self.uc[0]['F-STRINGS'])
-
-        # set defaults
-#        self.fs.update(
-#            self.uc[0]["F-STRINGS"])
-
         while queue:
             # usecase f-str
             self.fs.update(
                 self.uc[queue]["F-STRINGS"])
 
-# TESTING ONLY
-            print(f"\033[1;31m{self.uc[queue]['METADATA']['description']}\033[0m\n\033[1;33mself.fs:\033[0m {self.fs}")
             # put body attributes
             self.ui.html_reload()
             self.ui.html_update(self.fs)
@@ -179,9 +166,6 @@ class Silta:
                     sql_data = self.db.runsql(
                                     cmd.format(**self.fs))
 
-# TESTING ONLY
-                    print(f"\033[1;33mSQL {template}:\033[0m {cmd.format(**self.fs)}")
-                    print(f"\033[1;33mDTA {template}:\033[0m {sql_data}")
                     self.ui.html_export(sql_data, template)
 
                     # export sql to body
@@ -208,4 +192,3 @@ class Silta:
             # update unoccupied
             self.ui.html_update(
                 self.uc[0]['F-STRINGS'])
-
