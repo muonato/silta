@@ -80,6 +80,9 @@
     "daisy-chain":0},
 "F-STRINGS":{
     "uc":"6",
+    "note-css":"info",
+    "show-notify":"block",
+    "note-msg":"Attribute deleted",
     "show-task":"block"},
 "TEMPLATES":{
     "NONE":["DELETE FROM attrs WHERE attr_id = {ai};"]}
@@ -92,7 +95,7 @@
     "uc":"7",
     "note-css":"info",
     "show-notify":"block",
-    "note-msg":"Task updated",
+    "note-msg":"Attribute updated",
     "show-task":"block"},
 "TEMPLATES":{
     "NONE":["UPDATE attrs SET attr_data = '{ad}' WHERE attr_id = {ai}"]}
@@ -122,6 +125,9 @@
     "daisy-chain":1},
 "F-STRINGS":{
     "uc":"10",
+    "note-css":"info",
+    "show-notify":"block",
+    "note-msg":"Task deleted",
     "show-task":"none"},
 "TEMPLATES":{
     "NONE":["WITH RECURSIVE task_chain(n) AS (VALUES({ti}) UNION SELECT task_id FROM tasks, task_chain WHERE tasks.task_host=task_chain.n) DELETE FROM attrs WHERE attrs.attr_host IN task_chain;","WITH RECURSIVE task_chain(n) AS (VALUES({ti}) UNION SELECT task_id FROM tasks, task_chain WHERE tasks.task_host=task_chain.n) DELETE FROM tasks WHERE tasks.task_id IN task_chain;"]}
@@ -207,7 +213,7 @@
     "show-toolbar":"block",
     "note-css":"info",
     "show-notify":"block",
-    "note-msg":"Searched in total <strong>{total_tasks}</strong> tasks and <strong>{total_attrs}</strong> attributes for \"{keyword}\" "},
+    "note-msg":"Searched <strong>\"{keyword}\"</strong> in total <strong>{total_tasks}</strong> tasks and <strong>{total_attrs}</strong> attributes"},
 "TEMPLATES":{
     "BODY":["SELECT '{fk}' AS keyword", "SELECT COUNT(*) AS total_tasks FROM tasks", "SELECT COUNT(*) AS total_attrs FROM attrs"],
     "TASK":["SELECT DISTINCT tasks.task_id, IIF(attrs.attr_data LIKE '%{fk}%' OR attrs.attr_name LIKE '%{fk}%','Attribute','Task name') AS timestamp, '1' AS fw, '4&ti='||tasks.task_id AS alt_uc, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name FROM tasks, attrs WHERE tasks.task_name LIKE '%{fk}%' OR (attrs.attr_name LIKE '%{fk}%' AND attrs.attr_host = tasks.task_id) OR (attrs.attr_data LIKE '%{fk}%' AND attrs.attr_host = tasks.task_id) ORDER BY tasks.task_id {so}"]}
@@ -228,7 +234,7 @@
     "uc":"19",
     "note-css":"info",
     "show-notify":"block",
-    "note-msg":"<strong>SILTA</strong> - Simple Localized Tasks<br/>Version 1.0 (07-MAY-2024)<br/>Documentation&nbsp;<a href='https://github.com/muonato/silta/wiki'><u>github.com/muonato/silta/wiki</u></a><br/>GNU General Public License GPLv3\n",
+    "note-msg":"<strong>SILTA</strong> - Simple Localized Tasks<br/>Version 1.0 (08-MAY-2024)<br/>Documentation&nbsp;<a href='https://github.com/muonato/silta/wiki'><u>github.com/muonato/silta/wiki</u></a><br/>GNU General Public License GPLv3\n",
     "show-summary":"none"},
 "TEMPLATES":{}
 }
