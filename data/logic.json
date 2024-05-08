@@ -38,15 +38,14 @@
     "daisy-chain":0},
 "F-STRINGS":{
     "uc":"3",
-    "note-css":"warn",
-    "show-notify":"block",
-    "note-msg":"Select <strong>[+]</strong> to append new task or maximize <strong>[v]</strong> to edit template \"{task_name}\" ",
     "show-task":"block"},
 "TEMPLATES":{
     "BODY":["SELECT '2' AS new_task, '3' AS fw, tasks.task_id, tasks.task_host, IIF(tasks.task_done = 1, 'checked', '') AS task_done, 'Template&#58;' AS task_type, tasks.task_name, 'Template' AS timestamp, IIF(tasks.task_host IS NULL, 'uc=1', 'uc=3&ti='||tasks.task_host) AS prev_uc FROM tasks WHERE tasks.task_id = {ti} "],
     "TASK":["SELECT '3' AS fw, '3&ti='||tasks.task_id AS alt_uc, tasks.task_host, tasks.task_id, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name, 'Template' AS timestamp FROM tasks WHERE tasks.task_host = {ti};"],
     "TEXT":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'TEXT' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
-    "NOTE":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'NOTE' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"]}
+    "NOTE":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'NOTE' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
+    "LINK":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'LINK' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
+    "HREF":["SELECT attrs.attr_data AS link_href, attrs.attr_name AS link_name, 'block' AS show_link FROM attrs, tasks WHERE attrs.attr_type = 'LINK' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"]}
 },
 {"METADATA":{
     "use-case-id":4,
@@ -93,7 +92,7 @@
     "uc":"7",
     "note-css":"info",
     "show-notify":"block",
-    "note-msg":"Attribute updated",
+    "note-msg":"Saved changes to attribute",
     "show-task":"block"},
 "TEMPLATES":{
     "NONE":["UPDATE attrs SET attr_data = '{ad}' WHERE attr_id = {ai}"]}
@@ -143,6 +142,9 @@
     "daisy-chain":0},
 "F-STRINGS":{
     "uc":"12",
+    "note-css":"info",
+    "show-notify":"block",
+    "note-msg":"Saved changes to task name",
     "show-task":"block"},
 "TEMPLATES":{
     "NONE":["UPDATE tasks SET task_name = '{tn}' WHERE task_id = {ti}"]}
@@ -164,7 +166,7 @@
     "uc":"14",
     "note-css":"warn",
     "show-notify":"block",
-    "note-msg":"Select template to modify or <strong>[+]</strong> to create new",
+    "note-msg":"Select template to modify or 'New template' to add",
     "show-toolbar":"block"},
 "TEMPLATES":{
     "TASK":["SELECT tasks.task_id, '{uc}' AS fw, '3&ti='||tasks.task_id AS alt_uc, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name, 'Template' AS timestamp FROM tasks, attrs WHERE tasks.task_host IS NULL AND tasks.task_id = attrs.attr_host AND attrs.attr_type = 'TMPL';"]}
