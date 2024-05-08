@@ -124,7 +124,7 @@
     "uc":"10",
     "show-task":"none"},
 "TEMPLATES":{
-    "NONE":["WITH RECURSIVE task_chain(n) AS (VALUES(1) UNION SELECT task_id FROM tasks, task_chain WHERE tasks.task_host=task_chain.n) DELETE FROM attrs WHERE attrs.attr_host IN task_chain;","WITH RECURSIVE task_chain(n) AS (VALUES({ti}) UNION SELECT task_id FROM tasks, task_chain WHERE tasks.task_host=task_chain.n) DELETE FROM tasks WHERE tasks.task_id IN task_chain;"]}
+    "NONE":["WITH RECURSIVE task_chain(n) AS (VALUES({ti}) UNION SELECT task_id FROM tasks, task_chain WHERE tasks.task_host=task_chain.n) DELETE FROM attrs WHERE attrs.attr_host IN task_chain;","WITH RECURSIVE task_chain(n) AS (VALUES({ti}) UNION SELECT task_id FROM tasks, task_chain WHERE tasks.task_host=task_chain.n) DELETE FROM tasks WHERE tasks.task_id IN task_chain;"]}
 },
 {"METADATA":{
     "use-case-id":11,
