@@ -92,7 +92,7 @@
 <!-- TASK -->
         <div class="view data" style="display: {show-task}">
             <div id="object-main" class="hide">
-                <div class="inln bold">
+                <div class="inln oflw bold">
                     <a style="color: white" href="/?{prev_uc}">&lt;</a>&nbsp;{task_type}&nbsp;{task_name}
                 </div>
                 <div title="Status update" style="display: {task_done}" class="inln fltr">
@@ -109,19 +109,6 @@
                     </form>
                 </div>
                 <div title="Maximize" class="inln fltr bold clck" onclick="showdiv('object-edit', 'object-main')">&#709;
-                </div>
-                <div title="New task" class="fltr bold clck">
-                    <a href="/?uc={new_task}&ti={task_id}">+</a>
-                </div>
-                <div title="Summary" class="fltr bold clck" style="display: {show-summary}" onclick="showdiv('show-summary', ''); selectText('summary-text')">
-                        <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAoAgMAAADvWWBNAAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAABkSURBVBjTvdFLCsAgDATQwVXJUXJK8SRZhjll/YeWLtpNA5qHqMEI1CBWCO2BWnxkkqjDL6wzS5sAl5Zp+pGrzq/Ee0pQc9Big28mDqb2uhy0++rs/DoWN4iNps5qOtn/pPMAThGKVFPaYcsfAAAAAElFTkSuQmCC" height="24px" />
-                </div>
-                <div title="Templates" class="fltr bold clck" style="display: {show-templates}">
-                    <a href="/?uc=15&ti={task_id}">
-                        <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoAgMAAADxkFD+AAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAABKSURBVBjTY2BgWgUBCxjgzBUMDFxQ5iogs4EBDLRwMFcQwWQCm0ocE6ilgWHAmcT7DSsTHnwrEIG6ggGJCQfYmasQsaKFYHLBmQD0cGs7cTLdWQAAAABJRU5ErkJggg==" height="24px" />
-                    </a>
                 </div>
             </div>
 <!-- TASK EDIT -->
@@ -193,9 +180,20 @@
                     </div>
                     <div title="Minimize" class="fltr bold clck" onclick="showdiv('object-main', 'object-edit')">&#708;
                     </div>
+                    <div title="New task" class="inln fltr bold clck">
+                        <a href="/?uc={new_task}&ti={task_id}">+</a>
+                    </div>
                     <div title="New attribute" class="fltr clck" onclick="showdiv('attr-edit', 'object-edit')">
                             <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
                             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkAgMAAACcbnALAAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAABFSURBVBjTY9BatWrVAgamBQwMCNYqOGsFAwjgZYG04WYRawoGC2hCA4iHnQUBWmSxQL5bhZNFvsmrYADsfRBYwcAFYwEAYlFPSSBclg8AAAAASUVORK5CYII=" height="24px" />                      
+                    </div>
+                    <div title="Summary" class="inln fltr bold clck" style="display: {show-summary}" onclick="showdiv('show-summary', ''); selectText('summary-text')">
+                        <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAoAgMAAADvWWBNAAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAABkSURBVBjTvdFLCsAgDATQwVXJUXJK8SRZhjll/YeWLtpNA5qHqMEI1CBWCO2BWnxkkqjDL6wzS5sAl5Zp+pGrzq/Ee0pQc9Big28mDqb2uhy0++rs/DoWN4iNps5qOtn/pPMAThGKVFPaYcsfAAAAAElFTkSuQmCC" height="24px" />
+                    </div>
+                    <div title="Templates" class="inln fltr bold clck" style="display: {show-templates}" onclick="location.href='/?uc=15&ti={task_id}';">
+                        <!-- Image courtesy of Google Material Symbols @ http://fonts.google.com/icons -->
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoAgMAAADxkFD+AAAACVBMVEUAAAAAAAD///+D3c/SAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAABKSURBVBjTY2BgWgUBCxjgzBUMDFxQ5iogs4EBDLRwMFcQwWQCm0ocE6ilgWHAmcT7DSsTHnwrEIG6ggGJCQfYmasQsaKFYHLBmQD0cGs7cTLdWQAAAABJRU5ErkJggg==" height="24px" />
                     </div>
                     <div title="Delete task" class="fltr bold clck"> 
                         <a href="/?uc=10&ti={ti}" onclick="return confirm('Delete task - are you sure ?')">
