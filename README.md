@@ -3,15 +3,14 @@
 ## About
 Single-user task organizer for web browser
 
-Python study SILTA is inspired by the *Kirjuri* application *(github.com/AnttiKurittu/kirjuri)*
+SILTA is inspired by the *Kirjuri* application *(github.com/AnttiKurittu/kirjuri)*
 
 ## Documentation
 See [SILTA Wiki](https://github.com/muonato/silta/wiki/Tutorial) for tutorial
 
 ## Changelog
-Latest update (07-MAY-2024):
-  - User interface tweaks
-  - Added attribute type for URL links
+Latest update (11-MAY-2024):
+  - Added support for task icons
 
 ## Requirements
 Current version tested on Python 3.9.2 with sqlite3 module version 2.6.0
