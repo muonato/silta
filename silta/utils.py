@@ -7,6 +7,7 @@
 """
 import time
 import json
+import base64
 
 def load_json(json_file):
     """Reads JSON formatted text file.
@@ -61,5 +62,29 @@ def timestamp():
     """
     return time.strftime("%d.%m.%Y %H:%M", time.localtime())
 
+def decode_icon(params):
+    """Encodes picture in folder 'ui/icons/' to base64 text.
+
+    Args:
+        params -- List of dictionaries with filename as value to 'task_icon' key
+
+    Returns:
+        params array with dictionaries 'task_icon' file encoded as base64
+
+    """
+    for data in params:
+        if "task_icon" in data:
+            if data["task_icon"]:
+                try:
+                    with open(f"ui/icons/{data['task_icon']}", "rb") as icon:
+                        img = base64.b64encode(icon.read()).decode("utf-8")
+                        data.update({"task_icon":f"data:image/png;base64,{img}"})
+                except Exception:
+                    err_message(f"Unable to decode \"ui/icons/{data['task_icon']}\"")
+                    data.update({"task_icon":""})
+                    pass
+
+    return params
+
 LOGIC_F = load_json("data/logic.json")
-TEMPLATE_KEYS = ["BODY", "TASK", "TEXT", "NOTE", "SUMM", "LINK", "HREF", "NONE"]
+TEMPLATE_KEYS = ["BODY", "TASK", "TEXT", "NOTE", "SUMM", "LINK", "HREF", "ICON", "NONE"]

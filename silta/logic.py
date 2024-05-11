@@ -40,12 +40,11 @@ class Silta:
         # read usecase configs
         self.uc = util.LOGIC_F
 
-    def get_qsl(self, shttp_qsl, auth_head=None):
+    def get_qsl(self, shttp_qsl):
         """Parse URL query string.
 
         Args:
             shttp_qsl -- Web browser URL query string.
-            auth_head -- HTTP authorization header.
 
         Returns:
             Web page to instance variable self.html
@@ -166,8 +165,10 @@ class Silta:
                     sql_data = self.db.runsql(
                                     cmd.format(**self.fs))
 
+                    sql_data = util.decode_icon(sql_data)
                     self.ui.html_export(sql_data, template)
-
+# TESTING
+                    print(f"\033[1;33mDATA {template}:\033[0m {sql_data}")
                     # export sql to body
                     for data in sql_data:
                         self.ui.html_update(data)
