@@ -16,4 +16,4 @@ Latest update (11-MAY-2024):
 Current version tested on Python 3.9.2 with sqlite3 module version 2.6.0
 
 ## Licensing
-SILTA is released under the terms of the GNU General Public License version 3, https://www.gnu.org/licenses/gpl-3.0.en.html
+SILTA is released under the terms of the [GNU General Public License version 3](https://www.gnu.org/licenses/gpl-3.0.en.html)
