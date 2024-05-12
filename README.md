@@ -10,7 +10,7 @@ See [SILTA Wiki](https://github.com/muonato/silta/wiki/) for tutorials
 
 ## Changelog
 Latest update (12-MAY-2024):
-  - Add main toolbar database name CSS class 'oflw'
+  - Main toolbar showing only filename not full path to database
   - Documentation updated
 
 ## Requirements
