@@ -9,8 +9,9 @@ SILTA is inspired by the [*Kirjuri*](https://github.com/AnttiKurittu/kirjuri) ap
 See [SILTA Wiki](https://github.com/muonato/silta/wiki/) for tutorials
 
 ## Changelog
-Latest update (11-MAY-2024):
-  - Added support for task icons
+Latest update (12-MAY-2024):
+  - Add main toolbar database name CSS class 'oflw'
+  - Documentation updated
 
 ## Requirements
 Current version tested on Python 3.9.2 with sqlite3 module version 2.6.0
