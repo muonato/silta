@@ -50,8 +50,9 @@ class Silta:
             Web page to instance variable self.html
 
         """
-        # store usecase f-strings
-        self.fs = {"db":self.db.name}
+        # display database filename in main toolbar
+        self.fs = {"db":self.db.name.split("/")[-1]} \
+            if "/" in self.db.name else {"db":self.db.name.split("\\")[-1]}
 
         try:
             # convert query string to dictionary
@@ -167,7 +168,8 @@ class Silta:
 
                     sql_data = util.decode_icon(sql_data)
                     self.ui.html_export(sql_data, template)
-
+# TESTING
+                    print(f"\033[1;33mDATA {template}:\033[0m {sql_data}")
                     # export sql to body
                     for data in sql_data:
                         self.ui.html_update(data)
