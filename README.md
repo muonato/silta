@@ -1,7 +1,7 @@
 # SILTA - Simple Localized Tasks
 
 ## About
-Single-user task organizer for web browser
+Single-user task management in web browser
 
 SILTA is inspired by the [*Kirjuri*](https://github.com/AnttiKurittu/kirjuri) application *(github.com/AnttiKurittu/kirjuri)*
 
