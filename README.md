@@ -9,9 +9,8 @@ SILTA is inspired by the [*Kirjuri*](https://github.com/AnttiKurittu/kirjuri) ap
 See [SILTA Wiki](https://github.com/muonato/silta/wiki/) for tutorials
 
 ## Changelog
-Latest update (12-MAY-2024):
-  - Main toolbar showing only filename not full path to database
-  - Documentation updated
+Latest update (14-MAY-2024):
+  - Task summary column 'Notes' show blank when NULL value
 
 ## Requirements
 Current version tested on Python 3.9.2 with sqlite3 module version 2.6.0
