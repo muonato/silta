@@ -59,7 +59,7 @@
 "TEMPLATES":{
     "BODY":["SELECT '8' AS new_task, '4' AS fw, tasks.task_id, tasks.task_host, IIF(tasks.task_done = 1, 'checked', '') AS task_done, '' AS task_type, tasks.task_name, dt.attr_data AS timestamp, IIF(tasks.task_host IS NULL, 'uc=1', 'uc=4&ti='||tasks.task_host) AS prev_uc FROM tasks, attrs dt WHERE dt.attr_type = 'TIME' AND dt.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
     "TASK":["SELECT DISTINCT '4' AS fw, '4&ti='||tasks.task_id AS alt_uc, tasks.task_host, tasks.task_id, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name, dt.attr_data AS timestamp, coalesce((SELECT ico.attr_data FROM attrs ico WHERE ico.attr_type = 'ICON' AND ico.attr_host = tasks.task_id), '') AS task_icon FROM tasks, attrs dt WHERE dt.attr_type = 'TIME' AND dt.attr_host = tasks.task_id AND tasks.task_host = {ti}"],
-    "SUMM":["WITH RECURSIVE task_chain(n) AS (VALUES({ti}) UNION SELECT task_id FROM tasks, task_chain WHERE tasks.task_host=task_chain.n) SELECT at.attr_data AS timestamp, tasks.task_name, IIF(tasks.task_done = 1, '(/)', '(!)') AS task_done, (SELECT attrs.attr_data FROM attrs WHERE attrs.attr_type = 'NOTE' AND attrs.attr_host = tasks.task_id AND tasks.task_id IN task_chain) AS note FROM tasks, attrs at WHERE at.attr_host = tasks.task_id AND at.attr_type = 'TIME' AND tasks.task_id IN task_chain;"],
+    "SUMM":["WITH RECURSIVE task_chain(n) AS (VALUES({ti}) UNION SELECT task_id FROM tasks, task_chain WHERE tasks.task_host=task_chain.n) SELECT at.attr_data AS timestamp, tasks.task_name, IIF(tasks.task_done = 1, '(/)', '(!)') AS task_done, coalesce((SELECT attrs.attr_data FROM attrs WHERE attrs.attr_type = 'NOTE' AND attrs.attr_host = tasks.task_id AND tasks.task_id IN task_chain), ' ') AS note FROM tasks, attrs at WHERE at.attr_host = tasks.task_id AND at.attr_type = 'TIME' AND tasks.task_id IN task_chain;"],
     "TEXT":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'TEXT' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
     "NOTE":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'NOTE' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
     "LINK":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'LINK' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
@@ -240,7 +240,7 @@
     "uc":"19",
     "note-css":"info",
     "show-notify":"block",
-    "note-msg":"<strong>SILTA</strong> - Simple Localized Tasks<br/>Version 1.0 (12-MAY-2024)<br/>Documentation&nbsp;<a href='https://github.com/muonato/silta/wiki'><u>github.com/muonato/silta/wiki</u></a><br/>GNU General Public License GPLv3\n",
+    "note-msg":"<strong>SILTA</strong> - Simple Localized Tasks<br/>Version 1.0 (14-MAY-2024)<br/>Documentation&nbsp;<a href='https://github.com/muonato/silta/wiki'><u>github.com/muonato/silta/wiki</u></a><br/>GNU General Public License GPLv3\n",
     "show-summary":"none"},
 "TEMPLATES":{}
 }
