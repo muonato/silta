@@ -10,7 +10,7 @@ See [SILTA Wiki](https://github.com/muonato/silta/wiki/) for tutorials
 
 ## Changelog
 Latest update (15-MAY-2024):
-  - Added theme 'dark' `$ ./app.py -t ui/dark`
+  - Added dark theme
 
 ## Requirements
 Current version tested on Python 3.9.2 with sqlite3 module version 2.6.0
