@@ -11,6 +11,7 @@ See [SILTA Wiki](https://github.com/muonato/silta/wiki/) for tutorials
 ## Changelog
 Latest update (15-MAY-2024):
   - Added dark theme
+  - Added default icons in white
 
 ## Requirements
 Current version tested on Python 3.9.2 with sqlite3 module version 2.6.0
