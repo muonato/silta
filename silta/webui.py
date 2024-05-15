@@ -39,7 +39,7 @@ class Frontend:
         html_json -- Template JSON file without suffix
 
     """
-    def __init__(self, html_home, html_json):
+    def __init__(self, html_page, html_json):
 
         # declare formatter object var
         self.fmt = NamespaceFormatter()
@@ -48,7 +48,7 @@ class Frontend:
         self.TEMPL = html_json[0]
 
         # read ui html body template file
-        with open(f"{html_home}.html") as f:
+        with open(f"{html_page}") as f:
             self.TEMPL["BODY"] = f.read()
 
         self.html = self.TEMPL["BODY"]

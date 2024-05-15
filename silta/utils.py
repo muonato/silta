@@ -32,7 +32,11 @@ def htm_data(folder):
         folder -- JSON file without suffix
 
     """
-    return load_json(f"{folder}.json")
+    htm_json = load_json(f"{folder}.json")
+    htm_json = load_json("ui/silta.json") \
+                    if not htm_json else htm_json
+
+    return htm_json
 
 def err_message(errstr):
     """Prints error message from exception.

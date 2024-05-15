@@ -22,20 +22,20 @@ class Silta:
 
     Args:
         sqlt_file -- Path to sqlite database file
-        theme_dir -- Directory for HTML templates
+        head_json -- HTML templates and page head
 
     Usage:
-        silta = Silta('<db-file>', 'ui-directory')
+        silta = Silta('<db-file>', 'folder/name')
 
     """
-    def __init__(self, sqlt_file, theme_dir):
+    def __init__(self, sqlt_file, head_json):
 
         # store database handler
         self.db = SQLiteDB(sqlt_file)
         
         # store ui handler
         self.ui = Frontend(
-            theme_dir, util.htm_data(theme_dir))
+            "ui/silta.html", util.htm_data(head_json))
 
         # read usecase configs
         self.uc = util.LOGIC_F
@@ -168,7 +168,8 @@ class Silta:
 
                     sql_data = util.decode_icon(sql_data)
                     self.ui.html_export(sql_data, template)
-
+# TESTING
+                    print(f"\033[1;33mDATA {template}:\033[0m {sql_data}")
                     # export sql to body
                     for data in sql_data:
                         self.ui.html_update(data)
