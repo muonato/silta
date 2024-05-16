@@ -222,7 +222,7 @@
     "note-msg":"Searched <strong>\"{keyword}\"</strong> in total <strong>{total_tasks}</strong> tasks and <strong>{total_attrs}</strong> attributes"},
 "TEMPLATES":{
     "BODY":["SELECT '{fk}' AS keyword", "SELECT COUNT(*) AS total_tasks FROM tasks", "SELECT COUNT(*) AS total_attrs FROM attrs"],
-    "TASK":["SELECT DISTINCT tasks.task_id, IIF(attrs.attr_data LIKE '%{fk}%' OR attrs.attr_name LIKE '%{fk}%','Attribute','Task name') AS timestamp, '1' AS fw, '4&ti='||tasks.task_id AS alt_uc, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name FROM tasks, attrs WHERE tasks.task_name LIKE '%{fk}%' OR (attrs.attr_name LIKE '%{fk}%' AND attrs.attr_host = tasks.task_id) OR (attrs.attr_data LIKE '%{fk}%' AND attrs.attr_host = tasks.task_id) ORDER BY tasks.task_id {so}"]}
+    "TASK":["SELECT DISTINCT tasks.task_id, IIF(attrs.attr_data LIKE '%{fk}%' OR attrs.attr_name LIKE '%{fk}%','Attribute','Task name') AS timestamp, '1' AS fw, '4&ti='||tasks.task_id AS alt_uc, IIF(tasks.task_done = 1, 'checked', '') AS task_done, tasks.task_name, coalesce((SELECT ico.attr_data FROM attrs ico WHERE ico.attr_type = 'ICON' AND ico.attr_host = tasks.task_id), '') AS task_icon FROM tasks, attrs WHERE tasks.task_name LIKE '%{fk}%' OR (attrs.attr_name LIKE '%{fk}%' AND attrs.attr_host = tasks.task_id) OR (attrs.attr_data LIKE '%{fk}%' AND attrs.attr_host = tasks.task_id) ORDER BY tasks.task_id {so}"]}
 },
 {"METADATA":{
     "use-case-id":18,
