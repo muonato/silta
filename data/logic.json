@@ -64,7 +64,8 @@
     "NOTE":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'NOTE' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
     "LINK":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'LINK' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
     "ICON":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'ICON' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
-    "HREF":["SELECT attrs.attr_data AS link_href, attrs.attr_name AS link_name, 'block' AS show_link FROM attrs, tasks WHERE attrs.attr_type = 'LINK' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"]}
+    "HREF":["SELECT attrs.attr_data AS link_href, attrs.attr_name AS link_name, 'block' AS show_link FROM attrs, tasks WHERE attrs.attr_type = 'LINK' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
+	"DATA":["SELECT * FROM attrs, tasks WHERE attrs.attr_type != 'LINK' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"]}
 },
 {"METADATA":{
     "use-case-id":5,
@@ -226,11 +227,12 @@
 },
 {"METADATA":{
     "use-case-id":18,
-    "description":"foobar",
+    "description":"Task overview",
     "daisy-chain":0},
 "F-STRINGS":{
     "uc":"18"},
-"TEMPLATES":{}
+"TEMPLATES":{
+	"DATA":["SELECT * FROM attrs, tasks WHERE attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"]}
 },
 {"METADATA":{
     "use-case-id":19,
@@ -240,7 +242,7 @@
     "uc":"19",
     "note-css":"info",
     "show-notify":"block",
-    "note-msg":"<strong>SILTA</strong> - Simple Localized Tasks<br/>Version 1.0 (16-MAY-2024)<br/>Documentation&nbsp;<a href='https://github.com/muonato/silta/wiki'><u>github.com/muonato/silta/wiki</u></a><br/>GNU General Public License GPLv3\n",
+    "note-msg":"<strong>SILTA</strong> - Simple Localized Tasks<br/>Version 1.0 (15-MAY-2024)<br/>Documentation&nbsp;<a href='https://github.com/muonato/silta/wiki'><u>github.com/muonato/silta/wiki</u></a><br/>GNU General Public License GPLv3\n",
     "show-summary":"none"},
 "TEMPLATES":{}
 }
