@@ -90,8 +90,8 @@
         </div>
 <!-- END TOOLBAR -->
 <!-- TASK -->
-        <div class="view data" style="display: {show-task}">
-            <div id="object-main" class="hide">
+        <div class="view data" class="hide"style="display: {show-task}">
+            <div id="object-main" class="norm">
                 <div class="inln oflw bold">
                     <a style="color: white" href="/?{prev_uc}">&lt;</a>&nbsp;{task_type}&nbsp;{task_name}
                 </div>
@@ -110,6 +110,10 @@
                 </div>
                 <div title="Maximize" class="inln fltr bold clck" onclick="showdiv('object-edit', 'object-main')">&#709;
                 </div>
+<hr>
+				<div class="grid">
+{DATA}
+				</div>
             </div>
 <!-- TASK EDIT -->
 <!-- NEW ATTR -->
@@ -163,7 +167,7 @@
                 </form> 
             </div>
 <!-- NEW ATTR END -->
-            <div id="object-edit" class="norm">
+            <div id="object-edit" class="hide">
                 <div class="inln full">
                     <div class="inln bold"><a style="color: white" href="/?{prev_uc}">&lt;</a>&nbsp;{task_type}&nbsp;{task_name}
                     </div>
