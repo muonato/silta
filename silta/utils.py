@@ -91,4 +91,4 @@ def decode_icon(params):
     return params
 
 LOGIC_F = load_json("data/logic.json")
-TEMPLATE_KEYS = ["BODY", "TASK", "TEXT", "NOTE", "SUMM", "LINK", "HREF", "ICON", "NONE"]
+TEMPLATE_KEYS = ["BODY", "TASK", "TEXT", "NOTE", "SUMM", "LINK", "HREF", "ICON", "DATA", "NONE"]
