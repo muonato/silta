@@ -32,8 +32,8 @@ def main():
                     help="server HTTP service port, default: 8000")
     options.add_argument("-d", "--database", default="data/silta.db",
                     help="sqlite database file")
-    options.add_argument("-t", "--theme", default="ui/silta",
-                    help="browser theme path, default: 'ui/silta'")
+    options.add_argument("-t", "--theme", default="silta",
+                    help="browser theme path, default: 'silta'")
 
     args = options.parse_args()
 
