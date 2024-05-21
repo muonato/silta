@@ -11,6 +11,7 @@ See [SILTA Wiki](https://github.com/muonato/silta/wiki/) for tutorials
 ## Changelog
 Latest update (21-MAY-2024):
   - Links now displayed below other attributes in task view
+  - Startup parameter format for theme changed, e.g. `--theme dark`
 
 ## Requirements
 Current version tested on Python 3.9.2 with sqlite3 module version 2.6.0
