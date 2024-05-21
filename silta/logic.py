@@ -35,7 +35,7 @@ class Silta:
         
         # store ui handler
         self.ui = Frontend(
-            "ui/silta.html", util.htm_data(head_json))
+            "ui/silta.html", util.htm_data(f"ui/{head_json}"))
 
         # read usecase configs
         self.uc = util.LOGIC_F
@@ -168,12 +168,13 @@ class Silta:
 
                     sql_data = util.decode_icon(sql_data)
                     self.ui.html_export(sql_data, template)
-
+# TESTING
+                    print(f"\033[1;38m{self.uc[queue]['METADATA']['description']}\033\n[1;33mDATA {template}:\033[0m {sql_data}")
                     # export sql to body
                     for data in sql_data:
                         self.ui.html_update(data)
 
-            # task template
+
             if queue == 16:
                 self.add_template(sql_data)
 
