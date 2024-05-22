@@ -9,9 +9,8 @@ SILTA is inspired by the [*Kirjuri*](https://github.com/AnttiKurittu/kirjuri) ap
 See [SILTA Wiki](https://github.com/muonato/silta/wiki/) for tutorials
 
 ## Changelog
-Latest update (21-MAY-2024):
-  - Links now displayed below other attributes in task view
-  - Startup parameter format for theme changed, e.g. `--theme dark`
+Latest update (22-MAY-2024):
+  - Added icons for digital forensics devices
 
 ## Requirements
 Current version tested on Python 3.9.2 with sqlite3 module version 2.6.0
