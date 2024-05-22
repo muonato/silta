@@ -198,7 +198,8 @@
     "NOTE":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'NOTE' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
     "LINK":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'LINK' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
     "ICON":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'ICON' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
-    "HREF":["SELECT attrs.attr_data AS link_href, attrs.attr_name AS link_name, 'block' AS show_link FROM attrs, tasks WHERE attrs.attr_type = 'LINK' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"]}
+    "HREF":["SELECT attrs.attr_data AS link_href, attrs.attr_name AS link_name, 'block' AS show_link FROM attrs, tasks WHERE attrs.attr_type = 'LINK' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
+    "DATA":["SELECT * FROM attrs, tasks WHERE attrs.attr_type != 'LINK' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"]}
 },
 {"METADATA":{
     "use-case-id":16,
