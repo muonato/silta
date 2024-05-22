@@ -84,9 +84,6 @@
     "daisy-chain":0},
 "F-STRINGS":{
     "uc":"6",
-    "note-css":"info",
-    "show-notify":"block",
-    "note-msg":"Attribute deleted",
     "show-task":"block"},
 "TEMPLATES":{
     "NONE":["DELETE FROM attrs WHERE attr_id = {ai};"]}
@@ -97,9 +94,6 @@
     "daisy-chain":0},
 "F-STRINGS":{
     "uc":"7",
-    "note-css":"info",
-    "show-notify":"block",
-    "note-msg":"Attribute updated",
     "show-task":"block"},
 "TEMPLATES":{
     "NONE":["UPDATE attrs SET attr_data = '{ad}' WHERE attr_id = {ai}"]}
@@ -152,9 +146,6 @@
     "daisy-chain":0},
 "F-STRINGS":{
     "uc":"12",
-    "note-css":"info",
-    "show-notify":"block",
-    "note-msg":"Task updated",
     "show-task":"block"},
 "TEMPLATES":{
     "NONE":["UPDATE tasks SET task_name = '{tn}' WHERE task_id = {ti}"]}
