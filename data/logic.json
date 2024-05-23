@@ -47,7 +47,7 @@
     "LINK":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'LINK' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
     "ICON":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'ICON' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
     "HREF":["SELECT attrs.attr_data AS link_href, attrs.attr_name AS link_name, 'block' AS show_link FROM attrs, tasks WHERE attrs.attr_type = 'LINK' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
-    "DATA":["SELECT * FROM attrs, tasks WHERE attrs.attr_type != 'LINK' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"]}
+    "DATA":["SELECT * FROM attrs, tasks WHERE attrs.attr_type != 'LINK' AND attrs.attr_type != 'TMPL' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"]}
 },
 {"METADATA":{
     "use-case-id":4,
@@ -66,7 +66,7 @@
     "LINK":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'LINK' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
     "ICON":["SELECT * FROM attrs, tasks WHERE attrs.attr_type = 'ICON' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
     "HREF":["SELECT attrs.attr_data AS link_href, attrs.attr_name AS link_name, 'block' AS show_link FROM attrs, tasks WHERE attrs.attr_type = 'LINK' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"],
-	"DATA":["SELECT * FROM attrs, tasks WHERE attrs.attr_type != 'LINK' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"]}
+	"DATA":["SELECT * FROM attrs, tasks WHERE attrs.attr_type != 'LINK' AND attrs.attr_type != 'TMPL' AND attrs.attr_host = tasks.task_id AND tasks.task_id = {ti};"]}
 },
 {"METADATA":{
     "use-case-id":5,
@@ -138,7 +138,7 @@
     "uc":"11",
     "show-toolbar":"block"},
 "TEMPLATES":{
-    "NONE":["INSERT INTO tasks ('task_host') VALUES (NULL);","INSERT INTO attrs ('attr_host','attr_type') VALUES ((SELECT seq FROM SQLITE_SEQUENCE WHERE name='tasks'), 'TMPL');","INSERT INTO attrs ('attr_host', 'attr_type', 'attr_name', 'attr_data') VALUES ((SELECT seq FROM SQLITE_SEQUENCE WHERE name='tasks'), 'TIME', 'Last status', 'Template');"]}
+    "NONE":["INSERT INTO tasks ('task_host') VALUES (NULL);","INSERT INTO attrs ('attr_host','attr_type','attr_name','attr_data') VALUES ((SELECT seq FROM SQLITE_SEQUENCE WHERE name='tasks'), 'TMPL', 'Template', 'TRUE');","INSERT INTO attrs ('attr_host', 'attr_type', 'attr_name', 'attr_data') VALUES ((SELECT seq FROM SQLITE_SEQUENCE WHERE name='tasks'), 'TIME', 'Last status', 'Template');"]}
 },
 {"METADATA":{
     "use-case-id":12,
