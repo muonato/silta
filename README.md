@@ -9,9 +9,9 @@ SILTA is inspired by the [*Kirjuri*](https://github.com/AnttiKurittu/kirjuri) ap
 See [SILTA Wiki](https://github.com/muonato/silta/wiki/) for tutorials
 
 ## Changelog
-Latest update (22-MAY-2024):
-  - Added icons for digital forensics devices
-  - Removed notification on task and attribute updates
+Latest update (23-MAY-2024):
+  - Added icons for digital forensics wifi, bluetooth and transmitter devices
+  - Removed notification on task delete
 
 ## Requirements
 Current version tested on Python 3.9.2 with sqlite3 module version 2.6.0
