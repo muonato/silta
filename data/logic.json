@@ -123,9 +123,6 @@
     "daisy-chain":1},
 "F-STRINGS":{
     "uc":"10",
-    "note-css":"info",
-    "show-notify":"block",
-    "note-msg":"Task deleted",
     "show-task":"none"},
 "TEMPLATES":{
     "NONE":["WITH RECURSIVE task_chain(n) AS (VALUES({ti}) UNION SELECT task_id FROM tasks, task_chain WHERE tasks.task_host=task_chain.n) DELETE FROM attrs WHERE attrs.attr_host IN task_chain;","WITH RECURSIVE task_chain(n) AS (VALUES({ti}) UNION SELECT task_id FROM tasks, task_chain WHERE tasks.task_host=task_chain.n) DELETE FROM tasks WHERE tasks.task_id IN task_chain;"]}
