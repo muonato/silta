@@ -13,6 +13,7 @@ Latest update (24-MAY-2024):
   - Removed obsolete icons in white color
   - Added JS function invIcon() to invert color
   - Tweaked task display to show enlarged icon
+  - Changed default theme name to 'suomi'
 
 ## Requirements
 Current version tested on Python 3.9.2 with sqlite3 module version 2.6.0
