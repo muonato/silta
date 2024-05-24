@@ -33,7 +33,7 @@ def main():
     options.add_argument("-d", "--database", default="data/silta.db",
                     help="sqlite database file")
     options.add_argument("-t", "--theme", default="suomi",
-                    help="frontend theme, default: 'suomi'")
+                    help="frontend theme name, default: 'suomi'")
 
     args = options.parse_args()
 
