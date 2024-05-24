@@ -9,9 +9,10 @@ SILTA is inspired by the [*Kirjuri*](https://github.com/AnttiKurittu/kirjuri) ap
 See [SILTA Wiki](https://github.com/muonato/silta/wiki/) for tutorials
 
 ## Changelog
-Latest update (23-MAY-2024):
-  - Added icons for digital forensics wifi, bluetooth and transmitter devices
-  - Removed notification on task delete
+Latest update (24-MAY-2024):
+  - Removed obsolete icons in white color
+  - Added JS function invIcon() to invert color
+  - Tweaked task display to show enlarged icon
 
 ## Requirements
 Current version tested on Python 3.9.2 with sqlite3 module version 2.6.0
