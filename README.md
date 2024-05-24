@@ -6,7 +6,7 @@ Single-user task management in web browser
 SILTA is inspired by the [*Kirjuri*](https://github.com/AnttiKurittu/kirjuri) application *(github.com/AnttiKurittu/kirjuri)*
 
 ## Documentation
-See [SILTA Wiki](https://github.com/muonato/silta/wiki/) for tutorials
+See [SILTA Wiki](https://github.com/muonato/silta/wiki/) for more detailed information
 
 ## Changelog
 Latest update (24-MAY-2024):
