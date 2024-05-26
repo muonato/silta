@@ -159,9 +159,6 @@ class Silta:
             self.ui.html_reload()
             self.ui.html_update(self.fs)
 
-# TESTING
-            print(f"\033[1;34m{self.uc[queue]['METADATA']['description']}")
-
             # to template
             sql_data = []
             for template,sql in self.uc[queue]["TEMPLATES"].items():
@@ -171,15 +168,10 @@ class Silta:
 
                     sql_data = util.decode_icon(sql_data)
                     self.ui.html_export(sql_data, template)
-# TESTING
-                    if sql_data:
-                        print(f"\033\n[1;33m{template}:\033[0m {sql_data}")
 
                     # export sql to body
                     for data in sql_data:
                         self.ui.html_update(data)
-# TESTING
-            print(f"\033\n[1;33mself.fs:\033[0m {self.fs}")
 
             if queue == 16:
                 self.add_template(sql_data)
