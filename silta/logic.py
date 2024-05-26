@@ -95,13 +95,13 @@ class Silta:
 
         self.db.runsql(
             "CREATE TEMP TABLE tmp_attrs (attr_id, attr_host, attr_type, attr_name, attr_data);")
-      
-        attr_chain = self.db.runsql(                                                                                                               
-            f"WITH RECURSIVE task_chain(n) AS (VALUES({self.fs['ti']}) \                                                                           
-                UNION SELECT task_id FROM tasks, task_chain \                                                                                      
-                WHERE tasks.task_host=task_chain.n) \                                                                                              
+
+        attr_chain = self.db.runsql(
+            f"WITH RECURSIVE task_chain(n) AS (VALUES({self.fs['ti']}) \
+                UNION SELECT task_id FROM tasks, task_chain \
+                WHERE tasks.task_host=task_chain.n) \
                 SELECT * FROM attrs WHERE attr_host IN task_chain;")
-      
+
         for data in task_chain:
             for attr in attr_chain:
                 if attr["attr_host"] == data["task_id"]:
@@ -132,7 +132,7 @@ class Silta:
             self.db.runsql(
                 f"INSERT INTO tmp_tasks (task_id, task_host, task_done, task_name) \
                     VALUES ({data['task_id']}, {data['task_host']}, 0, \"{data['task_name']}\");")
- 
+
             next_id = next_id + 1
 
         self.db.runsql("UPDATE tmp_tasks SET task_id = NULL;")
@@ -159,6 +159,9 @@ class Silta:
             self.ui.html_reload()
             self.ui.html_update(self.fs)
 
+# TESTING
+            print(f"\033[1;34m{self.uc[queue]['METADATA']['description']}")
+
             # to template
             sql_data = []
             for template,sql in self.uc[queue]["TEMPLATES"].items():
@@ -168,11 +171,15 @@ class Silta:
 
                     sql_data = util.decode_icon(sql_data)
                     self.ui.html_export(sql_data, template)
+# TESTING
+                    if sql_data:
+                        print(f"\033\n[1;33m{template}:\033[0m {sql_data}")
 
                     # export sql to body
                     for data in sql_data:
                         self.ui.html_update(data)
-
+# TESTING
+            print(f"\033\n[1;33mself.fs:\033[0m {self.fs}")
 
             if queue == 16:
                 self.add_template(sql_data)
