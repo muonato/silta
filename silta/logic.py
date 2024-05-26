@@ -95,13 +95,13 @@ class Silta:
 
         self.db.runsql(
             "CREATE TEMP TABLE tmp_attrs (attr_id, attr_host, attr_type, attr_name, attr_data);")
-
-        attr_chain = self.db.runsql(
-            f"WITH RECURSIVE attr_chain(n) AS (VALUES({self.fs['ti']}) \
-                UNION SELECT attr_id FROM attrs, attr_chain \
-                WHERE attrs.attr_host=attr_chain.n) \
-                SELECT * FROM attrs WHERE attr_id IN attr_chain;")
-
+      
+        attr_chain = self.db.runsql(                                                                                                               
+            f"WITH RECURSIVE task_chain(n) AS (VALUES({self.fs['ti']}) \                                                                           
+                UNION SELECT task_id FROM tasks, task_chain \                                                                                      
+                WHERE tasks.task_host=task_chain.n) \                                                                                              
+                SELECT * FROM attrs WHERE attr_host IN task_chain;")
+      
         for data in task_chain:
             for attr in attr_chain:
                 if attr["attr_host"] == data["task_id"]:
