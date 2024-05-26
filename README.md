@@ -5,14 +5,14 @@ Single-user task management in web browser
 
 SILTA is inspired by the [*Kirjuri*](https://github.com/AnttiKurittu/kirjuri) application *(github.com/AnttiKurittu/kirjuri)*
 
-See '[Use Cases - Digital Forensics](https://github.com/muonato/silta/wiki/3-%E2%80%90-Use-cases#digital-forensics)' to learn more
+See '[Use Cases - Digital Forensics](https://github.com/muonato/silta/wiki/3-%E2%80%90-Use-cases#digital-forensics)' to learn how to utilize
 
 ## Documentation
-See [SILTA Wiki](https://github.com/muonato/silta/wiki/) for detailed information
+See [SILTA Wiki](https://github.com/muonato/silta/wiki/) for project documentation
 
 ## Changelog
 Update (26-MAY-2024):
-  - Added pre-defined database 'd4n6.db' for digital forensics
+  - Added pre-defined database 'data/d4n6.db' for digital forensics
   - Added theme 'd4n6' for digital forensics
 
 Update (24-MAY-2024):
