@@ -9,7 +9,11 @@ SILTA is inspired by the [*Kirjuri*](https://github.com/AnttiKurittu/kirjuri) ap
 See [SILTA Wiki](https://github.com/muonato/silta/wiki/) for more detailed information
 
 ## Changelog
-Latest update (24-MAY-2024):
+Update (26-MAY-2024):
+  - Added pre-defined database 'd4n6.db' for digital forensics
+  - Added theme 'd4n6' for digital forensics
+
+Update (24-MAY-2024):
   - Removed obsolete icons in white color
   - Added JS function invIcon() to invert color
   - Tweaked task display to show enlarged icon
