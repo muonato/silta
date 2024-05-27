@@ -5,7 +5,7 @@ Single-user task management in web browser
 
 SILTA is inspired by the [*Kirjuri*](https://github.com/AnttiKurittu/kirjuri) application *(github.com/AnttiKurittu/kirjuri)*
 
-See '[Use Cases - Digital Forensics](https://github.com/muonato/silta/wiki/3-%E2%80%90-Use-cases#digital-forensics)' for digital forensics workflow
+See '[Use Cases](https://github.com/muonato/silta/wiki/3-%E2%80%90-Use-cases#digital-forensics)' to learn digital forensics workflow with SILTA
 
 ## Documentation
 See [SILTA Wiki](https://github.com/muonato/silta/wiki/) for project documentation
