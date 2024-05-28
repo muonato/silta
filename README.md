@@ -11,6 +11,9 @@ See '[Use Cases](https://github.com/muonato/silta/wiki/3-%E2%80%90-Use-cases#dig
 See [SILTA Wiki](https://github.com/muonato/silta/wiki/) for project documentation
 
 ## Changelog
+Update (28-MAY-2024):
+  - Added file dialog for selecting icon attribute
+
 Update (26-MAY-2024):
   - Added pre-defined database 'data/d4n6.db' for digital forensics
   - Added theme 'd4n6' for digital forensics
