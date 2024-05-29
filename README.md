@@ -1,7 +1,7 @@
 # SILTA - Simple Localized Tasks
 
 ## About
-Single-user task management in web browser
+The digital-forensics-friendly task management browser application
 
 SILTA is inspired by the [*Kirjuri*](https://github.com/AnttiKurittu/kirjuri) application *(github.com/AnttiKurittu/kirjuri)*
 
@@ -13,6 +13,7 @@ See [SILTA Wiki](https://github.com/muonato/silta/wiki/) for project documentati
 ## Changelog
 Update (29-MAY-2024):
   - Updated icon options pulldown in theme 'd4n6'
+  - [Discussions](https://github.com/muonato/silta/discussions) opened
 
 Update (28-MAY-2024):
   - Added file dialog for selecting icon attribute
