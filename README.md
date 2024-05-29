@@ -1,7 +1,7 @@
 # SILTA - Simple Localized Tasks
 
 ## About
-The digital-forensics-friendly task management browser application
+The digital-forensics-friendly task management application
 
 SILTA is inspired by the [*Kirjuri*](https://github.com/AnttiKurittu/kirjuri) application *(github.com/AnttiKurittu/kirjuri)*
 
