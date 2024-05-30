@@ -11,6 +11,9 @@ See '[Use Cases](https://github.com/muonato/silta/wiki/3-%E2%80%90-Use-cases#dig
 See [SILTA Wiki](https://github.com/muonato/silta/wiki/) for project documentation
 
 ## Changelog
+Update (30-MAY-2024):
+- Added search sorting by status or created time
+
 Update (29-MAY-2024):
   - Updated icon options pulldown in theme 'd4n6'
   - [Discussions](https://github.com/muonato/silta/discussions) opened
