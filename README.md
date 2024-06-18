@@ -5,10 +5,10 @@ The digital-forensics-friendly task management application
 
 SILTA is inspired by [*Kirjuri*](https://github.com/AnttiKurittu/kirjuri) *(github.com/AnttiKurittu/kirjuri)*
 
-See '[Use Cases](https://github.com/muonato/silta/wiki/3-%E2%80%90-Use-cases#digital-forensics)' to learn how to manage digital forensics workflow with SILTA
+See '[Use Cases](https://github.com/muonato/silta/wiki/2-%E2%80%90-Use-cases#digital-forensics)' for digital forensics setup
 
 ## Documentation
-See [SILTA Wiki](https://github.com/muonato/silta/wiki/) for project documentation
+See [SILTA Wiki](https://github.com/muonato/silta/wiki/) for documentation
 
 ## Changelog
 Update (30-MAY-2024):
