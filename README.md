@@ -7,8 +7,7 @@ SILTA is inspired by [*Kirjuri*](https://github.com/AnttiKurittu/kirjuri) *(gith
 
 See '[Use Cases](https://github.com/muonato/silta/wiki/2-%E2%80%90-Use-cases#digital-forensics)' for digital forensics setup
 
-## Documentation
-See [SILTA Wiki](https://github.com/muonato/silta/wiki/) for documentation
+Basic principles have been [observed and reported in documentation](https://github.com/muonato/silta/wiki/) (TRL 1)
 
 ## Changelog
 Update (30-MAY-2024):
