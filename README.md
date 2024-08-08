@@ -7,7 +7,7 @@ SILTA is inspired by the [*Kirjuri*](https://github.com/AnttiKurittu/kirjuri) ap
 
 Basic principles have been observed and [reported in documentation](https://github.com/muonato/silta/wiki/). (TRL 1)
 
-## Changelog
+## Latest updates
 Update (30-MAY-2024):
 - Added search sorting by status or created time
 
